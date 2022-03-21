@@ -1,8 +1,11 @@
 using WeSafe.DTO;
 using WeSafe.Models;
-namespace WeSafe.Profile
+
 using AutoMapper;
+namespace  WeSafe.Profiles
 {
+    
+
     public class PersonProfile : Profile
     {
         public PersonProfile()
@@ -18,7 +21,7 @@ using AutoMapper;
             .ForMember(dest => dest.Picture, opt => opt.MapFrom(src => src.Picture))
             .ForMember(dest => dest.Sex, opt => opt.MapFrom(src => src.Sex))
                 .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Phone))
-            .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
+            .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address));
             
             CreateMap<PersonDto, Person>();
 
