@@ -17,29 +17,36 @@ namespace WeSafe.Data
         {
         }
 
-        public Task<List<Police>> GetData()
+        public async Task<List<Police>> GetData()
         {
-            throw new NotImplementedException();
+            var data = await _context.Polices.ToListAsync();
+            return data;
         }
 
-        public Task<Police> GetDataById(int id)
+        public async Task<Police> GetDataById(int id)
         {
-            throw new NotImplementedException();
+           return await _context.Polices.FirstOrDefaultAsync(x => x.PoliceId == id);
         }
 
-        public Task<Police> InsertData(Police service)
+        public async Task<Police> InsertData(Police police)
         {
-            throw new NotImplementedException();
+           _context.Polices.Add(police);
+            await _context.SaveChangesAsync();
+            return police;
         }
 
-        public Task<Police> UpdateData(Police service)
+        public async Task<Police> UpdateData(Police police)
         {
-            throw new NotImplementedException();
+            _context.Update(police).Property(x => x.PoliceId).IsModified = false;
+            await _context.SaveChangesAsync();
+            return police;
         }
 
-        public Task<bool> DeleteData(Police service)
+        public async Task<bool> DeleteData(Police police)
         {
-            throw new NotImplementedException();
+             _context.Polices.Remove(police);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public Task<List<Police>> GetPaginatedData(int pageNumber, int pageSize, string orderBy, string search)
