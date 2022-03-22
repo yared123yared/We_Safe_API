@@ -11,7 +11,7 @@ using WeSafe.Models;
 
 namespace Controllers{
     [ApiController]
-    [Route("api/users")]
+    [Route("api/persons")]
     public class PersonController:ControllerBase
     {
         private readonly IRepository<Person> _personRepository;
