@@ -12,7 +12,7 @@ namespace WeSafe.Data
         {
             _context = context;
         }
-
+        
         public PoliceRepository()
         {
         }
