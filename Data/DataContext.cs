@@ -1,0 +1,17 @@
+
+using Microsoft.EntityFrameworkCore;
+using WeSafe.Models;
+using System;
+namespace WeSafe.Data
+{
+    public class DataContext : DbContext
+    {
+        public DataContext() { }
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Police> Polices { get; set; }
+        public DbSet<PoliceStation> PoliceStations { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+    }
+}

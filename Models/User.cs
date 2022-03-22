@@ -11,8 +11,10 @@ namespace WeSafe.Models
         public int UserId { get; set; }
         public string IdentificationCard { get; set; }
 
-        public Role Role { get; set; }
+        //   navigational element
 
-        }
+        public Person Person { get; set; }
+
+    }
 
 }

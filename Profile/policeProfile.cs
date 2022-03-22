@@ -15,12 +15,12 @@ namespace  WeSafe.Profiles
             .ForMember(dest => dest.Experiance, opt => opt.MapFrom(src => src.Experiance))
             .ForMember(dest => dest.Level, opt => opt.MapFrom(src => src.Level))
             .ForMember(dest => dest.Person, opt => opt.MapFrom(src => src.Person)) 
-            .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role))
+            // .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role))
             // .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
             .ForMember(dest => dest.PoliceStation, opt => opt.MapFrom(src => src.PoliceStation));
          
             
-            CreateMap<PersonDto, Person>();
+            CreateMap<PoliceDto, Police>();
 
   
 

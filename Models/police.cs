@@ -15,8 +15,7 @@ namespace WeSafe.Models
 
         // Navigational element
         public Person Person { get; set; }
-        public Role Role { get; set; }
-        public PoliceStation PoliceStation { get; set; }
+       public PoliceStation PoliceStation { get; set; }
 
 
 

@@ -20,6 +20,7 @@ namespace WeSafe.Models
         // Navigational Element
 
         public Address Address { get; set; }
+        public Role Role { get; set; }
      
 
 
