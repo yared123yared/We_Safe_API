@@ -23,5 +23,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.3"/>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2"/>
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1"/>
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+AUXBRuwbTWnAPZwkajxcbPETSaGSZQGJAktmkl3oayWOSFK22a88LGLh8IkDHPCLhUFRw5HY/ZyEI9r0U/5xg==",
+  "dgSpecHash": "MhaiJp2UzIihoqAWxPss8up5a3tqZ5HNVITM7FS8foUIM6IFm1ULN3C/JruAa8GRKj5Xg+AuyDrHkMLzsIO24w==",
   "success": true,
   "projectFilePath": "/Users/apple/Documents/Company/hadistech/WeSafe/wesafe_backend/wesafe_backend.csproj",
   "expectedPackageFiles": [
@@ -55,6 +55,7 @@
     "/Users/apple/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "/Users/apple/.nuget/packages/microsoft.extensions.caching.abstractions/6.0.0/microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "/Users/apple/.nuget/packages/microsoft.extensions.caching.memory/6.0.1/microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
+    "/Users/apple/.nuget/packages/microsoft.extensions.configuration/6.0.1/microsoft.extensions.configuration.6.0.1.nupkg.sha512",
     "/Users/apple/.nuget/packages/microsoft.extensions.configuration.abstractions/6.0.0/microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "/Users/apple/.nuget/packages/microsoft.extensions.dependencyinjection/6.0.0/microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "/Users/apple/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
