@@ -12,25 +12,26 @@ namespace WeSafe.Data
         {
             _context = context;
         }
-        
+
         public PoliceRepository()
         {
         }
 
         public async Task<List<Police>> GetData()
         {
-            var data = await _context.Polices.ToListAsync();
+            var data = await _context.Polices.Include(e => e.Person).ThenInclude(e => e.Role)
+             .Include(e => e.PoliceStation).ToListAsync();
             return data;
         }
 
         public async Task<Police> GetDataById(int id)
         {
-           return await _context.Polices.FirstOrDefaultAsync(x => x.PoliceId == id);
+            return await _context.Polices.FirstOrDefaultAsync(x => x.PoliceId == id);
         }
 
         public async Task<Police> InsertData(Police police)
         {
-           _context.Polices.Add(police);
+            _context.Polices.Add(police);
             await _context.SaveChangesAsync();
             return police;
         }
@@ -44,7 +45,7 @@ namespace WeSafe.Data
 
         public async Task<bool> DeleteData(Police police)
         {
-             _context.Polices.Remove(police);
+            _context.Polices.Remove(police);
             await _context.SaveChangesAsync();
             return true;
         }

@@ -44,6 +44,18 @@ builder.Services.AddAuthentication(x =>
         ValidateAudience = false
     };
 });
+builder.Services.AddControllersWithViews()
+
+           .AddNewtonsoftJson(options =>
+           options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy("allowedOrigin",
+        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+        );
+});
 builder.Services.AddScoped<IRepository<Person>, PersonRepository>();
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
 builder.Services.AddScoped<IRepository<PoliceStation>, PoliceStationRepository>();
