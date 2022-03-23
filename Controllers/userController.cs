@@ -12,7 +12,7 @@ using WeSafe.DTO;
 
 namespace Controllers
 {   
-    [Authorize]
+    // [Authorize]
    
     [ApiController]
      [Route("api/users")]
