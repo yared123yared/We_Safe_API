@@ -61,7 +61,7 @@ namespace Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdatePoliceStation(int id, PoliceStationDto policeStationDto)
         {
-            // Console.WriteLine(technician.AccepteStatus);
+            Console.WriteLine("update police station method have been invocked");
             var PoliceStation = _mapper.Map<PoliceStation>(policeStationDto);
             await _policeStationRepository.UpdateData(PoliceStation);
             return Ok(User);

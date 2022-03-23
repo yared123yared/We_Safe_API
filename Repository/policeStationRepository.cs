@@ -37,7 +37,7 @@ namespace WeSafe.Data
 
         public async Task<PoliceStation> UpdateData(PoliceStation policeStation)
         {
-            _context.Update(policeStation).Property(x => x.PoliceStationId).IsModified = false;
+            _context.PoliceStations.Update(policeStation).Property(x => x.PoliceStationId).IsModified = false;
             await _context.SaveChangesAsync();
             return policeStation;
         }
