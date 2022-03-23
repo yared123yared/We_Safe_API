@@ -19,7 +19,7 @@ namespace WeSafe.Data
 
         public async Task<List<Person>> GetData()
         {
-            var data = await _context.Persons.ToListAsync();
+            var data = await _context.Persons.Include(e=>e.Role).ToListAsync();
             return data;
         }
 
