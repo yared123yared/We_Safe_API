@@ -23,14 +23,14 @@ namespace Controllers
         }
         // [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme,Roles = "Admin")]
         [HttpGet]
-        public async Task<IActionResult> GetPolice()
+        public async Task<IActionResult> GetPolices()
         {   
             Console.WriteLine("Get Police Method invocked");
             var model = await _policeRepository.GetData();
             return Ok(_mapper.Map<IEnumerable<PoliceDto>>(model));
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPoliceById(int id)
+        public async Task<IActionResult> GetPolice(int id)
         {   
             Console.WriteLine("Get Police Method invocked");
             var model = await _policeRepository.GetDataById(id);

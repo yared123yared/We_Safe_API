@@ -28,18 +28,17 @@ namespace Controllers
         }
         // [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme,Roles = "Admin")]
         [HttpGet]
-        public async Task<IActionResult> GetPoliceStation()
+        public async Task<IActionResult> GetPoliceStations()
         {
             Console.WriteLine("Get Police Method invocked");
             var model = await _policeStationRepository.GetData();
             return Ok(_mapper.Map<IEnumerable<PoliceStationDto>>(model));
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetSinglePoliceStation(int id)
+        public async Task<IActionResult> GetPoliceStation(int id)
         {
             var model = await _policeStationRepository.GetDataById(id);
-            var PoliceStation = _mapper.Map<PoliceStation>(model);
-            return Ok(PoliceStation);
+             return Ok(_mapper.Map<IEnumerable<PoliceStationDto>>(model));
         }
         [HttpPost]
         public async Task<IActionResult> CreatePoliceStation(PoliceStationDto policeStationDto)

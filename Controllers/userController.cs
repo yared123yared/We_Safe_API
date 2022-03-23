@@ -11,17 +11,17 @@ using WeSafe.Models;
 using WeSafe.DTO;
 
 namespace Controllers
-{   
+{
     // [Authorize]
-   
+
     [ApiController]
-     [Route("api/users")]
+    [Route("api/users")]
     public class UserController : ControllerBase
     {
         private readonly IRepository<User> _userRepository;
         private readonly IMapper _mapper;
         public UserController(IRepository<User> repo, IMapper mapper)
-        {   
+        {
 
             _userRepository = repo;
             _mapper = mapper;
@@ -29,12 +29,17 @@ namespace Controllers
         // [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme,Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> GetUsers()
-        {   
+        {
             Console.WriteLine("Get Users Method invocked");
             var model = await _userRepository.GetData();
             return Ok(_mapper.Map<IEnumerable<UserDto>>(model));
         }
-        
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUser(int id)
+        {
+            var model = await _userRepository.GetDataById(id);
+           return Ok(_mapper.Map<IEnumerable<UserDto>>(model));
+        }
         [HttpPost]
         public async Task<IActionResult> Createuser(UserDto userDto)
         {
@@ -60,8 +65,8 @@ namespace Controllers
             await _userRepository.UpdateData(User);
             return Ok(User);
         }
-       
-        
+
+
     }
 
 }
