@@ -34,7 +34,13 @@ namespace Controllers
             var model = await _policeRepository.GetData();
             return Ok(_mapper.Map<IEnumerable<PoliceDto>>(model));
         }
-        
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPoliceById(int id)
+        {   
+            Console.WriteLine("Get Police Method invocked");
+            var model = await _policeRepository.GetDataById(id);
+            return Ok(_mapper.Map<IEnumerable<PoliceDto>>(model));
+        }
         [HttpPost]
         public async Task<IActionResult> Createuser(PoliceDto policeDto)
         {
