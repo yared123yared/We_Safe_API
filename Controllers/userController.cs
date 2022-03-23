@@ -38,7 +38,8 @@ namespace Controllers
         public async Task<IActionResult> GetUser(int id)
         {
             var model = await _userRepository.GetDataById(id);
-           return Ok(_mapper.Map<IEnumerable<UserDto>>(model));
+            var User = _mapper.Map<User>(model);
+            return Ok(model);
         }
         [HttpPost]
         public async Task<IActionResult> Createuser(UserDto userDto)

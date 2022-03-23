@@ -28,7 +28,7 @@ namespace Controllers
         }
         // [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme,Roles = "Admin")]
         [HttpGet]
-        public async Task<IActionResult> GetPoliceStations()
+        public async Task<IActionResult> GetPoliceStation()
         {
             Console.WriteLine("Get Police Method invocked");
             var model = await _policeStationRepository.GetData();
@@ -38,7 +38,8 @@ namespace Controllers
         public async Task<IActionResult> GetPoliceStation(int id)
         {
             var model = await _policeStationRepository.GetDataById(id);
-             return Ok(_mapper.Map<IEnumerable<PoliceStationDto>>(model));
+            var PoliceStation = _mapper.Map<PoliceStation>(model);
+            return Ok(PoliceStation);
         }
         [HttpPost]
         public async Task<IActionResult> CreatePoliceStation(PoliceStationDto policeStationDto)

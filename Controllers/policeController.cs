@@ -34,7 +34,7 @@ namespace Controllers
         {   
             Console.WriteLine("Get Police Method invocked");
             var model = await _policeRepository.GetDataById(id);
-            return Ok(_mapper.Map<IEnumerable<PoliceDto>>(model));
+            return Ok(_mapper.Map<PoliceDto>(model));
         }
         [HttpPost]
         public async Task<IActionResult> Createuser(PoliceDto policeDto)
