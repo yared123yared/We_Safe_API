@@ -5,13 +5,10 @@ using WeSafe.Models;
 
 namespace WeSafe.DTO
 {
-    public class UserDto
+    public class RoleDto
     {
-       
-        public int UserId { get; set; }
-        public string IdentificationCard { get; set; }
-
-        public Role Role { get; set; }
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
 
     }
 

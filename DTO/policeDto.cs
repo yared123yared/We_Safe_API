@@ -7,8 +7,7 @@ namespace WeSafe.DTO
 {
     public class PoliceDto
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
         public int PoliceId { get; set; }
         public int Experiance { get; set; }
         public int Level { get; set; }
