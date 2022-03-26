@@ -6,17 +6,17 @@ namespace WeSafe.Profiles
 {
 
 
-    public class UserProfile : Profile
+    public class UserCreatProfile : Profile
     {
-        public UserProfile()
+        public UserCreatProfile()
         {
-            CreateMap<User, UserDto>()
+            CreateMap<User, UserCreatDto>()
             .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
-            .ForMember(dest => dest.IdentificationCard, opt => opt.MapFrom(src => src.IdentificationCard));
-            // .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role));
+            .ForMember(dest => dest.IdentificationCard, opt => opt.MapFrom(src => src.IdentificationCard))
+            .ForMember(dest => dest.PersonDto, opt => opt.MapFrom(src => src.Person));
             
 
-            CreateMap<UserDto, User>();
+            CreateMap<UserCreatDto, User>();
 
         }
 
