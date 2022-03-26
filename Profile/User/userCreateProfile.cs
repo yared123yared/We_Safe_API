@@ -20,7 +20,7 @@ namespace WeSafe.Profiles
             CreateMap<User, UserCreatDto>()
             .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
             .ForMember(dest => dest.IdentificationCard, opt => opt.MapFrom(src => src.IdentificationCard))
-            .ForMember(dest => _mapper.Map<Person>(dest.PersonCreateDto), opt => opt.MapFrom(src => src.Person));
+            .ForMember(dest => dest.Person, opt => opt.MapFrom(src => src.Person));
 
 
             CreateMap<UserCreatDto, User>();

@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WeSafe.Models;
 
-namespace WeSafe.DTO
+namespace WeSafe.DTO.Read
 {
     
-      public class PersonReadDto{
+      public class Person{
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PersonId { get; set; }
