@@ -26,24 +26,6 @@ namespace wesafe_backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PoliceStations",
-                columns: table => new
-                {
-                    PoliceStationId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PoliceStationName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Subcity = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Wereda = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Latitude = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Longtiude = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PoliceStations", x => x.PoliceStationId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Roles",
                 columns: table => new
                 {
@@ -54,6 +36,23 @@ namespace wesafe_backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Roles", x => x.RoleId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Stations",
+                columns: table => new
+                {
+                    StationId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StationName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Subcity = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Latitude = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Longtiude = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stations", x => x.StationId);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,9 +95,8 @@ namespace wesafe_backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Experiance = table.Column<int>(type: "int", nullable: false),
                     Level = table.Column<int>(type: "int", nullable: false),
-                    MyProperty = table.Column<int>(type: "int", nullable: false),
-                    PersonId = table.Column<int>(type: "int", nullable: false),
-                    PoliceStationId = table.Column<int>(type: "int", nullable: false)
+                    StationId = table.Column<int>(type: "int", nullable: false),
+                    PersonId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -110,10 +108,10 @@ namespace wesafe_backend.Migrations
                         principalColumn: "PersonId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Polices_PoliceStations_PoliceStationId",
-                        column: x => x.PoliceStationId,
-                        principalTable: "PoliceStations",
-                        principalColumn: "PoliceStationId",
+                        name: "FK_Polices_Stations_StationId",
+                        column: x => x.StationId,
+                        principalTable: "Stations",
+                        principalColumn: "StationId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -153,9 +151,9 @@ namespace wesafe_backend.Migrations
                 column: "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Polices_PoliceStationId",
+                name: "IX_Polices_StationId",
                 table: "Polices",
-                column: "PoliceStationId");
+                column: "StationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_PersonId",
@@ -172,7 +170,7 @@ namespace wesafe_backend.Migrations
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "PoliceStations");
+                name: "Stations");
 
             migrationBuilder.DropTable(
                 name: "Persons");

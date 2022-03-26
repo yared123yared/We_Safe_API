@@ -113,59 +113,19 @@ namespace wesafe_backend.Migrations
                     b.Property<int>("Level")
                         .HasColumnType("int");
 
-                    b.Property<int>("MyProperty")
-                        .HasColumnType("int");
-
                     b.Property<int>("PersonId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PoliceStationId")
+                    b.Property<int>("StationId")
                         .HasColumnType("int");
 
                     b.HasKey("PoliceId");
 
                     b.HasIndex("PersonId");
 
-                    b.HasIndex("PoliceStationId");
+                    b.HasIndex("StationId");
 
                     b.ToTable("Polices");
-                });
-
-            modelBuilder.Entity("WeSafe.Models.PoliceStation", b =>
-                {
-                    b.Property<int>("PoliceStationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PoliceStationId"), 1L, 1);
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Latitude")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Longtiude")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PoliceStationName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Subcity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Wereda")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PoliceStationId");
-
-                    b.ToTable("PoliceStations");
                 });
 
             modelBuilder.Entity("WeSafe.Models.Role", b =>
@@ -183,6 +143,39 @@ namespace wesafe_backend.Migrations
                     b.HasKey("RoleId");
 
                     b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("WeSafe.Models.Station", b =>
+                {
+                    b.Property<int>("StationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StationId"), 1L, 1);
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Latitude")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Longtiude")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StationName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subcity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("StationId");
+
+                    b.ToTable("Stations");
                 });
 
             modelBuilder.Entity("WeSafe.Models.User", b =>
@@ -234,15 +227,15 @@ namespace wesafe_backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WeSafe.Models.PoliceStation", "PoliceStation")
+                    b.HasOne("WeSafe.Models.Station", "Station")
                         .WithMany()
-                        .HasForeignKey("PoliceStationId")
+                        .HasForeignKey("StationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Person");
 
-                    b.Navigation("PoliceStation");
+                    b.Navigation("Station");
                 });
 
             modelBuilder.Entity("WeSafe.Models.User", b =>
