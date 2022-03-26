@@ -7,16 +7,15 @@ namespace WeSafe.DTO
 {
     public class PoliceDto
     {
-        
+
         public int PoliceId { get; set; }
         public int Experiance { get; set; }
         public int Level { get; set; }
-        public int MyProperty { get; set; }
 
         // Navigational element
+        public int StationId { get; set; }
+        public Station Station { get; set; }
         public Person Person { get; set; }
-        public Role Role { get; set; }
-        public PoliceStation PoliceStation { get; set; }
 
 
 

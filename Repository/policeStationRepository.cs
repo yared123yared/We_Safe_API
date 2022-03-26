@@ -5,51 +5,51 @@ using WeSafe.Models;
 
 namespace WeSafe.Data
 {
-    public class PoliceStationRepository : IRepository<PoliceStation>
+    public class StationRepository : IRepository<Station>
     {
         private readonly DataContext _context;
-        public PoliceStationRepository(DataContext context)
+        public StationRepository(DataContext context)
         {
             _context = context;
         }
 
-        public PoliceStationRepository()
+        public StationRepository()
         {
         }
 
-        public async Task<List<PoliceStation>> GetData()
+        public async Task<List<Station>> GetData()
         {
-           var data = await _context.PoliceStations.ToListAsync();
+            var data = await _context.Stations.ToListAsync();
             return data;
         }
 
-        public async Task<PoliceStation> GetDataById(int id)
+        public async Task<Station> GetDataById(int id)
         {
-            return await _context.PoliceStations.FirstOrDefaultAsync(x => x.PoliceStationId == id);
+            return await _context.Stations.FirstOrDefaultAsync(x => x.StationId == id);
         }
 
-        public async Task<PoliceStation> InsertData(PoliceStation policeStation)
+        public async Task<Station> InsertData(Station policeStation)
         {
-            _context.PoliceStations.Add(policeStation);
+            _context.Stations.Add(policeStation);
             await _context.SaveChangesAsync();
             return policeStation;
         }
 
-        public async Task<PoliceStation> UpdateData(PoliceStation policeStation)
+        public async Task<Station> UpdateData(Station policeStation)
         {
-            _context.PoliceStations.Update(policeStation).Property(x => x.PoliceStationId).IsModified = false;
+            _context.Stations.Update(policeStation).Property(x => x.StationId).IsModified = false;
             await _context.SaveChangesAsync();
             return policeStation;
         }
 
-        public async Task<bool> DeleteData(PoliceStation policeStation)
+        public async Task<bool> DeleteData(Station policeStation)
         {
-          _context.PoliceStations.Remove(policeStation);
+            _context.Stations.Remove(policeStation);
             await _context.SaveChangesAsync();
             return true;
         }
 
-        public Task<List<PoliceStation>> GetPaginatedData(int pageNumber, int pageSize, string orderBy, string search)
+        public Task<List<Station>> GetPaginatedData(int pageNumber, int pageSize, string orderBy, string search)
         {
             throw new NotImplementedException();
         }
@@ -59,7 +59,7 @@ namespace WeSafe.Data
             throw new NotImplementedException();
         }
 
-        public Task<PoliceStation> GetByEmail(string email)
+        public Task<Station> GetByEmail(string email)
         {
             throw new NotImplementedException();
         }

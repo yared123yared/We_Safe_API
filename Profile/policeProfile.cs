@@ -17,7 +17,7 @@ namespace  WeSafe.Profiles
             .ForMember(dest => dest.Person, opt => opt.MapFrom(src => src.Person)) 
             // .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role))
             // .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
-            .ForMember(dest => dest.PoliceStation, opt => opt.MapFrom(src => src.PoliceStation));
+            .ForMember(dest => dest.Station, opt => opt.MapFrom(src => src.Station));
          
             
             CreateMap<PoliceDto, Police>();

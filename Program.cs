@@ -58,7 +58,7 @@ builder.Services.AddCors(option =>
 });
 builder.Services.AddScoped<IRepository<Person>, PersonRepository>();
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
-builder.Services.AddScoped<IRepository<PoliceStation>, PoliceStationRepository>();
+builder.Services.AddScoped<IRepository<Station>, StationRepository>();
 builder.Services.AddScoped<IRepository<Police>, PoliceRepository>();
 builder.Services.AddScoped<IRepository<Role>, RoleRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

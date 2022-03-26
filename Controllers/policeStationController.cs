@@ -15,15 +15,15 @@ namespace Controllers
     // [Authorize]
 
     [ApiController]
-    [Route("api/policeStation")]
-    public class PoliceStationController : ControllerBase
+    [Route("api/station")]
+    public class StationController : ControllerBase
     {
-        private readonly IRepository<PoliceStation> _policeStationRepository;
+        private readonly IRepository<Station> _stationRepository;
         private readonly IMapper _mapper;
-        public PoliceStationController(IRepository<PoliceStation> repo, IMapper mapper)
+        public StationController(IRepository<Station> repo, IMapper mapper)
         {
 
-            _policeStationRepository = repo;
+            _stationRepository = repo;
             _mapper = mapper;
         }
         // [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme,Roles = "Admin")]
@@ -31,39 +31,39 @@ namespace Controllers
         public async Task<IActionResult> GetPoliceStation()
         {
             Console.WriteLine("Get Police Method invocked");
-            var model = await _policeStationRepository.GetData();
-            return Ok(_mapper.Map<IEnumerable<PoliceStationDto>>(model));
+            var model = await _stationRepository.GetData();
+            return Ok(_mapper.Map<IEnumerable<StationDto>>(model));
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPoliceStation(int id)
         {
-            var model = await _policeStationRepository.GetDataById(id);
-            var PoliceStation = _mapper.Map<PoliceStation>(model);
+            var model = await _stationRepository.GetDataById(id);
+            var PoliceStation = _mapper.Map<Station>(model);
             return Ok(PoliceStation);
         }
         [HttpPost]
-        public async Task<IActionResult> CreatePoliceStation(PoliceStationDto policeStationDto)
+        public async Task<IActionResult> CreatePoliceStation(StationDto policeStationDto)
         {
             Console.WriteLine("Creating users");
-            var PoliceStation = _mapper.Map<PoliceStation>(policeStationDto);
-            await _policeStationRepository.InsertData(PoliceStation);
+            var PoliceStation = _mapper.Map<Station>(policeStationDto);
+            await _stationRepository.InsertData(PoliceStation);
             return Ok(policeStationDto);
         }
         // [Authorize(Roles = RoleEntity.Admin)]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePoliceStation(int id)
         {
-            var model = await _policeStationRepository.GetDataById(id);
-            var PoliceStation = _mapper.Map<PoliceStation>(model);
-            await _policeStationRepository.DeleteData(PoliceStation);
+            var model = await _stationRepository.GetDataById(id);
+            var PoliceStation = _mapper.Map<Station>(model);
+            await _stationRepository.DeleteData(PoliceStation);
             return Ok(model);
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePoliceStation(int id, PoliceStationDto policeStationDto)
+        public async Task<IActionResult> UpdatePoliceStation(int id, StationDto policeStationDto)
         {
             Console.WriteLine("update police station method have been invocked");
-            var PoliceStation = _mapper.Map<PoliceStation>(policeStationDto);
-            await _policeStationRepository.UpdateData(PoliceStation);
+            var PoliceStation = _mapper.Map<Station>(policeStationDto);
+            await _stationRepository.UpdateData(PoliceStation);
             return Ok(User);
         }
 

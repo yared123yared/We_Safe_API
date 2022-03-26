@@ -18,14 +18,9 @@ namespace WeSafe.Models
         public string Sex { get; set; }
 
         // Navigational Element
-
         public Address Address { get; set; }
+        public int RoleId { get; set; }
         public Role Role { get; set; }
-     
-
-
-
-
 
     }
 
