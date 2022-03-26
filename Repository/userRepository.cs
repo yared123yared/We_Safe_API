@@ -19,13 +19,15 @@ namespace WeSafe.Data
 
         public async Task<List<User>> GetData()
         {
-            var data = await _context.Users.Include(e => e.Person).ThenInclude(e => e.Role).ToListAsync();
+            var data = await _context.Users.Include(e => e.Person).ThenInclude(e => e.Role)
+            .Include(e => e.Person).ThenInclude(e => e.Address).ToListAsync();
             return data;
         }
 
         public async Task<User> GetDataById(int id)
         {
-            return await _context.Users.FirstOrDefaultAsync(x => x.UserId == id);
+            return await _context.Users.Include(e => e.Person).ThenInclude(e => e.Role)
+            .Include(e => e.Person).ThenInclude(e => e.Address).FirstOrDefaultAsync(x => x.UserId == id);
         }
 
         public async Task<User> InsertData(User user)
@@ -44,7 +46,7 @@ namespace WeSafe.Data
 
         public async Task<bool> DeleteData(User user)
         {
-             _context.Users.Remove(user);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
             return true;
         }
