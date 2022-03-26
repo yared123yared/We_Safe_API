@@ -13,27 +13,9 @@ namespace WeSafe.DTO
 
         //   navigational element
 
-        public PersonReadDto PersonDto { get; set; }
+        public PersonReadDto PersonReadDto { get; set; }
 
     }
-    public class PersonReadDto{
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PersonId { get; set; }
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Password { get; set; }
-        public string Phone { get; set; }
-        public string Picture { get; set; }
-        public string Sex { get; set; }
-
-        // Navigational Element
-        public Address Address { get; set; }
-        public int RoleId { get; set; }
-        
-        public Role Role { get; set; }
- 
-    }
+  
 
 }
