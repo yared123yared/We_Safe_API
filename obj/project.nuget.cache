@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MhaiJp2UzIihoqAWxPss8up5a3tqZ5HNVITM7FS8foUIM6IFm1ULN3C/JruAa8GRKj5Xg+AuyDrHkMLzsIO24w==",
+  "dgSpecHash": "IRiMp3G4g4XILfJk3GyRqFzkRF9T1znPag2abmENMOnmX1ntnOK4BVvStebmUPzbW1966IYEY1PV/iv+YhcX5Q==",
   "success": true,
   "projectFilePath": "/Users/apple/Documents/Company/hadistech/WeSafe/wesafe_backend/wesafe_backend.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,10 @@
     "/Users/apple/.nuget/packages/messagepack/2.1.152/messagepack.2.1.152.nupkg.sha512",
     "/Users/apple/.nuget/packages/messagepack.annotations/2.1.152/messagepack.annotations.2.1.152.nupkg.sha512",
     "/Users/apple/.nuget/packages/messagepackanalyzer/2.1.152/messagepackanalyzer.2.1.152.nupkg.sha512",
+    "/Users/apple/.nuget/packages/microsoft.aspnet.cors/5.2.7/microsoft.aspnet.cors.5.2.7.nupkg.sha512",
+    "/Users/apple/.nuget/packages/microsoft.aspnet.webapi.client/5.2.7/microsoft.aspnet.webapi.client.5.2.7.nupkg.sha512",
+    "/Users/apple/.nuget/packages/microsoft.aspnet.webapi.core/5.2.7/microsoft.aspnet.webapi.core.5.2.7.nupkg.sha512",
+    "/Users/apple/.nuget/packages/microsoft.aspnet.webapi.cors/5.2.7/microsoft.aspnet.webapi.cors.5.2.7.nupkg.sha512",
     "/Users/apple/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/6.0.3/microsoft.aspnetcore.authentication.jwtbearer.6.0.3.nupkg.sha512",
     "/Users/apple/.nuget/packages/microsoft.aspnetcore.jsonpatch/6.0.3/microsoft.aspnetcore.jsonpatch.6.0.3.nupkg.sha512",
     "/Users/apple/.nuget/packages/microsoft.aspnetcore.mvc.newtonsoftjson/6.0.3/microsoft.aspnetcore.mvc.newtonsoftjson.6.0.3.nupkg.sha512",
@@ -163,6 +167,36 @@
       "warningLevel": 1,
       "message": "Package 'EntityFramework 5.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "EntityFramework",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Cors 5.2.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Cors",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.WebApi.Core 5.2.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.WebApi.Core",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.WebApi.Cors 5.2.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.WebApi.Cors",
       "targetGraphs": [
         "net6.0"
       ]

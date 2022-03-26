@@ -5,8 +5,9 @@ using WeSafe.Models;
 
 namespace WeSafe.DTO
 {
-    
-      public class PersonReadDto{
+
+    public class PersonReadDto
+    {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PersonId { get; set; }
@@ -21,9 +22,9 @@ namespace WeSafe.DTO
         // Navigational Element
         public Address Address { get; set; }
         public int RoleId { get; set; }
-        
+
         public Role Role { get; set; }
- 
+
     }
 
 }

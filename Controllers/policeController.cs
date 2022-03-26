@@ -11,6 +11,7 @@ namespace Controllers
    
     [ApiController]
      [Route("api/police")]
+     [System.Web.Http.Cors.EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PoliceController : ControllerBase
     {
         private readonly IRepository<Police> _policeRepository;
