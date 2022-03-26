@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using WeSafe.Models;
 
 namespace WeSafe.DTO
 {
@@ -12,7 +12,7 @@ namespace WeSafe.DTO
         public string IdentificationCard { get; set; }
 
         //   navigational element
-        public  PersonCreateDto Person { get; set; }
+        public  Person Person { get; set; }
 
     }
 }

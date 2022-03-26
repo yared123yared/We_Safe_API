@@ -17,7 +17,7 @@ namespace WeSafe.DTO
 
         //   navigational element
 
-        public PersonReadDto Person { get; set; }
+        public Person Person { get; set; }
 
     }
   
