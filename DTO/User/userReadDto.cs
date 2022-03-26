@@ -9,12 +9,7 @@ namespace WeSafe.DTO
     public class UserReadDto
     {
         
-         private readonly IMapper _mapper;
-        public UserReadDto(IMapper mapper)
-        {
-
-            _mapper = mapper;
-        }
+         
 
 
         public int UserId { get; set; }
@@ -22,7 +17,7 @@ namespace WeSafe.DTO
 
         //   navigational element
 
-        public Person PersonReadDto { get; set; }
+        public PersonReadDto Person { get; set; }
 
     }
   

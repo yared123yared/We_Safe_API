@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using WeSafe.Models;
 
-namespace WeSafe.DTO.Create
+namespace WeSafe.DTO
 {
     
-    public class Person{
+    public class PersonCreateDto{
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PersonId { get; set; }
