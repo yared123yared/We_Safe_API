@@ -52,7 +52,7 @@ builder.Services.AddControllersWithViews()
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddCors(option =>
 {
-    option.AddPolicy("allowedOrigin",
+    option.AddPolicy(name:"AllowedOrigin",
         builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
         );
 });
