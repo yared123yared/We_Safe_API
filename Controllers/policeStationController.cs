@@ -15,7 +15,7 @@ namespace Controllers
     // [Authorize]
 
     [ApiController]
-    [Route("api/station/new")]
+    [Route("api/station")]
     public class StationController : ControllerBase
     {
         private readonly IRepository<Station> _stationRepository;
