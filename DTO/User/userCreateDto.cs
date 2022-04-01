@@ -12,7 +12,8 @@ namespace WeSafe.DTO
         public string IdentificationCard { get; set; }
 
         //   navigational element
-        public  Person Person { get; set; }
+        public  PersonCreateDto Person { get; set; }
 
     }
+    
 }

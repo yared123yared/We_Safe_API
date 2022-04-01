@@ -9,36 +9,37 @@ using WeSafe.Data;
 using WeSafe.Entity;
 using WeSafe.Models;
 
-namespace Controllers{
+namespace Controllers
+{
     [ApiController]
     [Route("api/persons")]
-    public class PersonController:ControllerBase
+    public class PersonController : ControllerBase
     {
         private readonly IRepository<Person> _personRepository;
 
         private readonly IMapper _mapper;
-
-        public PersonController(IRepository<Person> repo, IMapper mapper){
-            _personRepository=repo;
-            _mapper=mapper;
+        public PersonController(IRepository<Person> repo, IMapper mapper)
+        {
+            _personRepository = repo;
+            _mapper = mapper;
         }
-        
+
         [AllowAnonymous]
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody] AuthenticateModel model)
         {
-            
+
             Console.WriteLine("Authentication Method");
             List<Person> persons = await _personRepository.GetData();
-            var person= persons.SingleOrDefault(x => x.Phone == model.Phone && x.Password == model.Password);
-        
+            var person = persons.SingleOrDefault(x => x.Phone == model.Phone && x.Password == model.Password);
+            
             // return null if user not found
-            if (person== null)
+            if (person == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
 
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
-          
+
             var key = Encoding.ASCII.GetBytes("THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING");
 
             var tokenDescriptor = new SecurityTokenDescriptor
