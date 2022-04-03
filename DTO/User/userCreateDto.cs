@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WeSafe.DTO.Create;
+
+using WeSafe.Models;
 // using WeSafe.Models;
 
 namespace WeSafe.DTO
