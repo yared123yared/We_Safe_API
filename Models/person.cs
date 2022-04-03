@@ -20,7 +20,8 @@ namespace WeSafe.Models
         // Navigational Element
         public Address Address { get; set; }
         public int RoleId { get; set; }
-        public Role Role { get; set; }
+
+        public Role? Role { get; set; }
 
     }
 
