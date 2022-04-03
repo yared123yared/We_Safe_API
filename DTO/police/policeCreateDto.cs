@@ -17,6 +17,8 @@ namespace WeSafe.DTO
         // public Station Station { get; set; }
         public Person Person { get; set; }
 
+        public int RoleId { get; set; }
+
 
 
 

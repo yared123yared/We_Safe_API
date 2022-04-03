@@ -15,11 +15,13 @@ namespace Controllers
     public class PoliceController : ControllerBase
     {
         private readonly IRepository<Police> _policeRepository;
+         private readonly IRepository<Role> _roleRepository;
         private readonly IMapper _mapper;
-        public PoliceController(IRepository<Police> repo, IMapper mapper)
+        public PoliceController(IRepository<Police> repo,IRepository<Role> roleRepo, IMapper mapper)
         {   
 
             _policeRepository = repo;
+            _roleRepository=roleRepo;
             _mapper = mapper;
         }
         // [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme,Roles = "Admin")]
@@ -39,7 +41,10 @@ namespace Controllers
         }
         [HttpPost]
         public async Task<IActionResult> Createuser(PoliceDto policeDto)
-        {
+        {   
+
+            Role role= await _roleRepository.GetDataById(policeDto.RoleId);
+            policeDto.Person.Role=role;
             Console.WriteLine("Creating users");
             var Police= _mapper.Map<Police>(policeDto);
             await _policeRepository.InsertData(Police);
