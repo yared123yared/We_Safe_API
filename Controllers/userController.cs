@@ -19,11 +19,13 @@ namespace Controllers
     public class UserController : ControllerBase
     {
         private readonly IRepository<User> _userRepository;
+        private readonly IRepository<Role> _roleRepository;
         private readonly IMapper _mapper;
-        public UserController(IRepository<User> repo, IMapper mapper)
+        public UserController(IRepository<User> repo, IRepository<Role> roleRepo, IMapper mapper)
         {
 
             _userRepository = repo;
+            _roleRepository = roleRepo;
             _mapper = mapper;
         }
         // [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme,Roles = "Admin")]
@@ -32,7 +34,7 @@ namespace Controllers
         {
             Console.WriteLine("Get Users Method invocked");
             var model = await _userRepository.GetData();
-            return Ok(_mapper.Map<IEnumerable<UserReadDto>>(model));
+            return Ok(_mapper.Map<IEnumerable<UserDto>>(model));
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
@@ -42,12 +44,15 @@ namespace Controllers
             return Ok(model);
         }
         [HttpPost]
-        public async Task<IActionResult> Createuser(UserCreatDto userCreatDto)
+        public async Task<IActionResult> Createuser(UserDto userDto)
         {
+
             Console.WriteLine("Creating users");
-            var User = _mapper.Map<User>(userCreatDto);
+            var User = _mapper.Map<User>(userDto);
+            Role role = await _roleRepository.GetDataById(userDto.RoleId);
+            User.Person.Role=role;
             await _userRepository.InsertData(User);
-            return Ok(userCreatDto);
+            return Ok(userDto);
         }
         // [Authorize(Roles = RoleEntity.Admin)]
         [HttpDelete("{id}")]
@@ -59,7 +64,7 @@ namespace Controllers
             return Ok(model);
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, UserCreatDto userDto)
+        public async Task<IActionResult> UpdateUser(int id, UserDto userDto)
         {
             // Console.WriteLine(technician.AccepteStatus);
             var User = _mapper.Map<User>(userDto);
