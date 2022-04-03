@@ -36,9 +36,11 @@ namespace WeSafe.Data
         }
 
         public async Task<Station> UpdateData(Station policeStation)
-        {
+        {   
+            Console.WriteLine("Entered to the Update repo");
             _context.Stations.Update(policeStation).Property(x => x.StationId).IsModified = false;
             await _context.SaveChangesAsync();
+            Console.WriteLine("finished updating");
             return policeStation;
         }
 
