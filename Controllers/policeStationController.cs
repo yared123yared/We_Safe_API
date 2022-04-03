@@ -64,7 +64,7 @@ namespace Controllers
             Console.WriteLine("update police station method have been invocked");
             var PoliceStation = _mapper.Map<Station>(policeStationDto);
             await _stationRepository.UpdateData(PoliceStation);
-            return Ok(User);
+            return Ok(policeStationDto);
         }
 
 
