@@ -1,0 +1,23 @@
+﻿<Properties StartupConfiguration="{84B4FB2C-305A-430E-9A01-E889BF6BA868}|Default">
+  <MonoDevelop.Ide.ItemProperties.wesafe__backend PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="obj/Debug/net6.0/wesafe_backend.GlobalUsings.g.cs">
+    <Files>
+      <File FileName="obj/Debug/net6.0/wesafe_backend.GlobalUsings.g.cs" Line="18" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="wesafe_backend" expanded="True">
+            <Node name="wesafe_backend" expanded="True" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -1,11 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
-
-
 using AutoMapper;
-
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using WeSafe.Data;
 using WeSafe.Models;
 using WeSafe.DTO;
@@ -13,7 +8,6 @@ using WeSafe.DTO;
 namespace Controllers
 {
     // [Authorize]
-
     [ApiController]
     [Route("api/users")]
     public class UserController : ControllerBase
