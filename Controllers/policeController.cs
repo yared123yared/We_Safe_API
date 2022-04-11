@@ -67,7 +67,7 @@ namespace Controllers
             // Console.WriteLine(technician.AccepteStatus);
             var Police = _mapper.Map<Police>(policeDto);
             await _policeRepository.UpdateData(Police);
-            return Ok(User);
+            return Ok(policeDto);
         }
 
 
