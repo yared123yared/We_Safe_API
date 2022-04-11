@@ -6,47 +6,49 @@ using WeSafe.Models;
 using WeSafe.DTO;
 
 namespace Controllers
-{   
+{
     // [Authorize]
-   
+
     [ApiController]
-     [Route("api/police")]
-     [System.Web.Http.Cors.EnableCors(origins: "*", headers: "*", methods: "*")]
+    [Route("api/police")]
+    [System.Web.Http.Cors.EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PoliceController : ControllerBase
     {
         private readonly IRepository<Police> _policeRepository;
-         private readonly IRepository<Role> _roleRepository;
+        private readonly IRepository<Role> _roleRepository;
         private readonly IMapper _mapper;
-        public PoliceController(IRepository<Police> repo,IRepository<Role> roleRepo, IMapper mapper)
-        {   
+        public PoliceController(IRepository<Police> repo, IRepository<Role> roleRepo, IMapper mapper)
+        {
 
             _policeRepository = repo;
-            _roleRepository=roleRepo;
+            _roleRepository = roleRepo;
             _mapper = mapper;
         }
         // [Authorize(AuthenticationSchemes=JwtBearerDefaults.AuthenticationScheme,Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> GetPolices()
-        {   
+        {
+
             Console.WriteLine("Get Police Method invocked");
+
             var model = await _policeRepository.GetData();
             return Ok(_mapper.Map<IEnumerable<PoliceDto>>(model));
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPolice(int id)
-        {   
+        {
             Console.WriteLine("Get Police Method invocked");
             var model = await _policeRepository.GetDataById(id);
             return Ok(_mapper.Map<PoliceDto>(model));
         }
         [HttpPost]
         public async Task<IActionResult> Createuser(PoliceDto policeDto)
-        {   
+        {
 
-            Role role= await _roleRepository.GetDataById(policeDto.RoleId);
-            policeDto.Person.Role=role;
+            Role role = await _roleRepository.GetDataById(policeDto.RoleId);
+            policeDto.Person.Role = role;
             Console.WriteLine("Creating users");
-            var Police= _mapper.Map<Police>(policeDto);
+            var Police = _mapper.Map<Police>(policeDto);
             await _policeRepository.InsertData(Police);
             return Ok(policeDto);
         }
@@ -67,8 +69,8 @@ namespace Controllers
             await _policeRepository.UpdateData(Police);
             return Ok(User);
         }
-       
-        
+
+
     }
 
 }

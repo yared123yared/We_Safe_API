@@ -35,7 +35,7 @@ namespace Controllers
             
             // return null if user not found
             if (person == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new { message = "Phone or password is incorrect" });
 
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();

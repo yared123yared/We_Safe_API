@@ -28,6 +28,7 @@ namespace WeSafe.Data
         public async Task<Police> GetDataById(int id)
         {
             return await _context.Polices.Include(e => e.Person).ThenInclude(e => e.Role)
+            .Include(e => e.Person).ThenInclude(e => e.Address)
              .Include(e => e.Station).FirstOrDefaultAsync(x => x.PoliceId == id);
         }
 
