@@ -43,11 +43,14 @@ namespace Controllers
             var key = Encoding.ASCII.GetBytes("THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING");
 
             var tokenDescriptor = new SecurityTokenDescriptor
-            {
+            {   
+
+
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name,person.FirstName),
-                    new Claim(ClaimTypes.Role,person.Role.RoleName)
+                    new Claim(ClaimTypes.Role,person.Role.RoleId.ToString())
+                 
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
