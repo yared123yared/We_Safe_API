@@ -49,6 +49,7 @@ namespace WeSafe.Data
         public async Task<bool> DeleteData(Police police)
         {
             _context.Polices.Remove(police);
+             _context.Persons.Remove(police.Person);
             await _context.SaveChangesAsync();
             return true;
         }
