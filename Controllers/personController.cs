@@ -50,7 +50,7 @@ namespace Controllers
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name,person.FirstName),
-                    new Claim(ClaimTypes.Role,person.Role.RoleId.ToString())
+                    new Claim(ClaimTypes.Role,person.Role.Id.ToString())
                  
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
