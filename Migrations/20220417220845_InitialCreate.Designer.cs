@@ -12,7 +12,7 @@ using WeSafe.Data;
 namespace wesafe_backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220417212152_InitialCreate")]
+    [Migration("20220417220845_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
