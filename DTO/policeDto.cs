@@ -8,7 +8,7 @@ namespace WeSafe.DTO
     public class PoliceDto
     {
 
-        public int PoliceId { get; set; }
+        public int Id { get; set; }
         public int Experiance { get; set; }
         public int Level { get; set; }
 

@@ -18,7 +18,7 @@ namespace WeSafe.Profiles
         public UserReadProfile()
         {
             CreateMap<User, UserDto>()
-            .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.IdentificationCard, opt => opt.MapFrom(src => src.IdentificationCard))
             .ForMember(dest => dest.Person, opt => opt.MapFrom(src => src.Person));
 

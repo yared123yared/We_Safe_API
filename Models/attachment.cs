@@ -8,11 +8,11 @@ namespace WeSafe.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int AttachmentId { get; set; }
-        public string Image  { get; set; }
-        public string Voice { get; set; }
-        public string video { get; set; }
+        public int Id { get; set; }
+        public ICollection<FilePath>?  Images  { get; set; }
+        public ICollection<FilePath>?  Voices { get; set; }
+        public ICollection<FilePath>? Videos { get; set; }
 
     }
 
-}
+}   

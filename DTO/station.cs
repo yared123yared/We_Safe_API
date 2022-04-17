@@ -6,7 +6,7 @@ namespace WeSafe.DTO
     public class StationDto
     {
 
-        public int StationId { get; set; }
+        public int Id { get; set; }
         public string StationName { get; set; }
         public string City { get; set; }
         public string Subcity { get; set; }

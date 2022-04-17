@@ -12,7 +12,7 @@ namespace WeSafe.DTO
          
 
 
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public string IdentificationCard { get; set; }
 
         //   navigational element

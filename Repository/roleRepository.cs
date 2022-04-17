@@ -31,7 +31,7 @@ namespace WeSafe.Data
 
         public async Task<Role> GetDataById(int id)
         {
-            return await _context.Roles.FirstOrDefaultAsync(x => x.RoleId == id);
+            return await _context.Roles.FirstOrDefaultAsync(x => x.Id == id);
         }
         public async Task<Role> InsertData(Role role)
         {
@@ -41,7 +41,7 @@ namespace WeSafe.Data
         }
         public async Task<Role> UpdateData(Role role)
         {
-            _context.Update(role).Property(x => x.RoleId).IsModified = false;
+            _context.Update(role).Property(x => x.Id).IsModified = false;
             await _context.SaveChangesAsync();
             return role;
         }
