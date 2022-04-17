@@ -15,7 +15,7 @@ namespace Controllers
     // [Authorize]
 
     [ApiController]
-    [Route("api/roles")]
+    [Route("api/roles")] 
     public class RoleController : ControllerBase
     {
         private readonly IRepository<Role> _roleRepository;
