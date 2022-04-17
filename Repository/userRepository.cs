@@ -27,7 +27,7 @@ namespace WeSafe.Data
         public async Task<User> GetDataById(int id)
         {
             return await _context.Users.Include(e => e.Person).ThenInclude(e => e.Role)
-            .Include(e => e.Person).ThenInclude(e => e.Address).FirstOrDefaultAsync(x => x.UserId == id);
+            .Include(e => e.Person).ThenInclude(e => e.Address).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<User> InsertData(User user)
@@ -39,7 +39,7 @@ namespace WeSafe.Data
 
         public async Task<User> UpdateData(User user)
         {
-            _context.Update(user).Property(x => x.UserId).IsModified = false;
+            _context.Update(user).Property(x => x.Id).IsModified = false;
             await _context.SaveChangesAsync();
             return user;
         }

@@ -4,17 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WeSafe.Models
 {
-    public class User
+    public class Report
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string IdentificationCard { get; set; }
-
-        //   navigational element
-
-        public Person Person { get; set; }
+        public string Summary { get; set; }
+        public string Description { get; set; }
+        public DateTime ReportDate { get; set; }
+        public User ReportedBy { get; set; }
+        public Evidence Evidence { get; set; }
 
     }
-
 }

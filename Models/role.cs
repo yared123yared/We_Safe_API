@@ -8,7 +8,7 @@ namespace WeSafe.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int RoleId { get; set; }
+        public int Id { get; set; }
         public string RoleName { get; set; }
 
     }

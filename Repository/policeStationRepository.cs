@@ -25,7 +25,7 @@ namespace WeSafe.Data
 
         public async Task<Station> GetDataById(int id)
         {
-            return await _context.Stations.FirstOrDefaultAsync(x => x.StationId == id);
+            return await _context.Stations.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Station> InsertData(Station policeStation)
@@ -38,7 +38,7 @@ namespace WeSafe.Data
         public async Task<Station> UpdateData(Station policeStation)
         {   
             Console.WriteLine("Entered to the Update repo");
-            _context.Stations.Update(policeStation).Property(x => x.StationId).IsModified = false;
+            _context.Stations.Update(policeStation).Property(x => x.Id).IsModified = false;
             await _context.SaveChangesAsync();
             Console.WriteLine("finished updating");
             return policeStation;

@@ -18,7 +18,7 @@ namespace WeSafe.Profiles
         public PersonProfile()
         {
             CreateMap<Person, PersonDto>()
-            .ForMember(dest => dest.PersonId, opt => opt.MapFrom(src => src.PersonId))
+            .ForMember(dest => dest.PersonId, opt => opt.MapFrom(src => src.Id))
              .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
               .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
             .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Phone))

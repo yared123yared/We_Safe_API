@@ -28,7 +28,7 @@ namespace WeSafe.Data
 
         public async Task<Person> GetDataById(int id)
         {
-             return await _context.Persons.FirstOrDefaultAsync(x => x.PersonId == id);
+             return await _context.Persons.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Person> InsertData(Person person)

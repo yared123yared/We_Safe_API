@@ -11,7 +11,7 @@ namespace WeSafe.Profiles
         public PoliceStationProfile()
         {
             CreateMap<Station, StationDto>()
-            .ForMember(dest => dest.StationId, opt => opt.MapFrom(src => src.StationId))
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.StationName, opt => opt.MapFrom(src => src.StationName))
             .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
             .ForMember(dest => dest.Subcity, opt => opt.MapFrom(src => src.Subcity))

@@ -14,5 +14,10 @@ namespace WeSafe.Data
         public DbSet<Station> Stations { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<Evidence> Evidences { get; set; }
+        public DbSet<Case> Cases { get; set; }
+        public DbSet<Report> Reports { get; set; }
+        public DbSet<FilePath> Paths { get; set; }
     }
 }
