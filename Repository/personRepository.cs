@@ -19,18 +19,23 @@ namespace WeSafe.Data
 
         public async Task<List<Person>> GetData()
         {
-            var data = await _context.Persons.Include(e=>e.Role).ToListAsync();
+            var data = await _context.Persons
+            .Include(e=>e.Role)
+            .Include(e=>e.Address)
+            .ToListAsync();
             return data;
         }
 
-        public Task<Person> GetDataById(int id)
+        public async Task<Person> GetDataById(int id)
         {
-            throw new NotImplementedException();
+             return await _context.Persons.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public Task<Person> InsertData(Person service)
+        public async Task<Person> InsertData(Person person)
         {
-            throw new NotImplementedException();
+             _context.Persons.Add(person);
+            await _context.SaveChangesAsync();
+            return person;
         }
 
         public Task<Person> UpdateData(Person service)
@@ -38,9 +43,11 @@ namespace WeSafe.Data
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteData(Person service)
+        public async Task<bool> DeleteData(Person person)
         {
-            throw new NotImplementedException();
+              _context.Persons.Remove(person);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public Task<List<Person>> GetPaginatedData(int pageNumber, int pageSize, string orderBy, string search)

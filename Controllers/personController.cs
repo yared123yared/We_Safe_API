@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using WeSafe.Data;
+using WeSafe.DTO;
 using WeSafe.Entity;
 using WeSafe.Models;
 
@@ -35,7 +36,7 @@ namespace Controllers
             
             // return null if user not found
             if (person == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new { message = "Phone or password is incorrect" });
 
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -43,11 +44,14 @@ namespace Controllers
             var key = Encoding.ASCII.GetBytes("THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING");
 
             var tokenDescriptor = new SecurityTokenDescriptor
-            {
+            {   
+
+
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name,person.FirstName),
-                    new Claim(ClaimTypes.Role,person.Role.RoleName)
+                    new Claim(ClaimTypes.Role,person.Role.Id.ToString())
+                 
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -58,6 +62,45 @@ namespace Controllers
             userEntity.person = person;
             userEntity.Token = tokenHandler.WriteToken(token);
             return Ok(userEntity);
+        }
+         [HttpGet]
+        public async Task<IActionResult> GetPersons()
+        {
+            Console.WriteLine("Get Persons Method invocked");
+            var model = await _personRepository.GetData();
+            return Ok(_mapper.Map<IEnumerable<PersonDto>>(model));
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPerson(int id)
+        {
+            var model = await _personRepository.GetDataById(id);
+            var User = _mapper.Map<PersonDto>(model);
+            return Ok(User);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreatPerson(PersonDto personDto)
+        {
+            Console.WriteLine("Creating roles");
+            var User = _mapper.Map<Person>(personDto);
+            await _personRepository.InsertData(User);
+            return Ok(personDto);
+        }
+        // [Authorize(Roles = RoleEntity.Admin)]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePerson(int id)
+        {
+            var model = await _personRepository.GetDataById(id);
+            var User = _mapper.Map<Person>(model);
+            await _personRepository.DeleteData(User);
+            return Ok(model);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdatePerson(int id, PersonDto personDto)
+        {
+            // Console.WriteLine(technician.AccepteStatus);
+            var User = _mapper.Map<Person>(personDto);
+            await _personRepository.UpdateData(User);
+            return Ok(User);
         }
     }
 }

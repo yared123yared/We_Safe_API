@@ -253,18 +253,18 @@ namespace wesafe_backend.Migrations
                     b.Property<DateTime>("ReportDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ReportedById")
-                        .HasColumnType("int");
-
                     b.Property<string>("Summary")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EvidenceId");
 
-                    b.HasIndex("ReportedById");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Reports");
                 });
@@ -434,7 +434,7 @@ namespace wesafe_backend.Migrations
 
                     b.HasOne("WeSafe.Models.User", "ReportedBy")
                         .WithMany()
-                        .HasForeignKey("ReportedById")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

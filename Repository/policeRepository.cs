@@ -20,7 +20,7 @@ namespace WeSafe.Data
         public async Task<List<Police>> GetData()
         {
             var data = await _context.Polices.Include(e => e.Person).ThenInclude(e => e.Role)
-             .Include(e => e.Station).ToListAsync();
+            .Include(e => e.Person).ThenInclude(e => e.Address).ToListAsync();
             return data;
         }
 
@@ -47,6 +47,7 @@ namespace WeSafe.Data
         public async Task<bool> DeleteData(Police police)
         {
             _context.Polices.Remove(police);
+             _context.Persons.Remove(police.Person);
             await _context.SaveChangesAsync();
             return true;
         }
