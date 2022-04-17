@@ -25,13 +25,18 @@ namespace WeSafe.Data
 
         public async Task<List<Report>> GetData()
         {
-            var data = await _context.Reports.Include(e=>e.ReportedBy).Include(e=>e.Evidence).ToListAsync();
+            var data = await _context.Reports
+            .Include(e=>e.ReportedBy).ThenInclude(e=>e.Person).ThenInclude(e=>e.Role)
+            .Include(e=>e.ReportedBy).ThenInclude(e=>e.Person).ThenInclude(e=>e.Address)
+            .Include(e=>e.Evidence).ThenInclude(e=>e.Attachment).ToListAsync();
             return data;
         }
 
         public async Task<Report> GetDataById(int id)
         {
-          return await _context.Reports.Include(e=>e.ReportedBy).Include(e=>e.Evidence).FirstOrDefaultAsync(x => x.Id == id);
+          return await _context.Reports.Include(e=>e.ReportedBy).ThenInclude(e=>e.Person).ThenInclude(e=>e.Role)
+            .Include(e=>e.ReportedBy).ThenInclude(e=>e.Person).ThenInclude(e=>e.Address)
+            .Include(e=>e.Evidence).ThenInclude(e=>e.Attachment).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public Task<List<Report>> GetPaginatedData(int pageNumber, int pageSize, string orderBy, string search)

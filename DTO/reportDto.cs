@@ -12,7 +12,7 @@ namespace WeSafe.DTO
         public string Description { get; set; }
         public DateTime ReportDate { get; set; }
         public int UserId { get; set; }
-        public User ReportedBy { get; set; }
+        public User? ReportedBy { get; set; }
         public Evidence Evidence { get; set; }
     }
 }
