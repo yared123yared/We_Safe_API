@@ -1,14 +1,13 @@
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WeSafe.Models
+
+using WeSafe.Models;
+
+namespace WeSafe.DTO
 {
-    public class Case
+    public class CaseDto
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+
+       public int Id { get; set; }
         public DateTime OpenedDate { get; set; }
         public DateTime ClosedDate { get; set; }
         public int PoliceId { get; set; }
@@ -19,6 +18,7 @@ namespace WeSafe.Models
         public Evidence? Evidence { get; set; }
         public string? Summary { get; set; }
         public string? Description { get; set; }
-
-    }
 }
+}
+
+       

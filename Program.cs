@@ -62,6 +62,7 @@ builder.Services.AddScoped<IRepository<Station>, StationRepository>();
 builder.Services.AddScoped<IRepository<Police>, PoliceRepository>();
 builder.Services.AddScoped<IRepository<Role>, RoleRepository>();
 builder.Services.AddScoped<IRepository<Report>, ReportRepository>();
+builder.Services.AddScoped<IRepository<Case>, CaseRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
