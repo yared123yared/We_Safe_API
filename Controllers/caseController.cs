@@ -43,8 +43,9 @@ namespace Controllers
         [HttpPost]
         public async Task<IActionResult> CreatCase(CaseDto caseDto)
         {
-
+            DateTime now = DateTime.Now;
             var Case = _mapper.Map<Case>(caseDto);
+            Case.OpenedDate=now;
             await _caseRepository.InsertData(Case);
             return Ok(caseDto);
         }

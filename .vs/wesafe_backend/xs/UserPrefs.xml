@@ -1,9 +1,6 @@
 ﻿<Properties StartupConfiguration="{84B4FB2C-305A-430E-9A01-E889BF6BA868}|Default">
   <MonoDevelop.Ide.ItemProperties.wesafe__backend PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="obj/Debug/net6.0/wesafe_backend.GlobalUsings.g.cs">
-    <Files>
-      <File FileName="obj/Debug/net6.0/wesafe_backend.GlobalUsings.g.cs" Line="18" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
