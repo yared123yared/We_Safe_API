@@ -67,6 +67,8 @@ namespace Controllers
             // Console.WriteLine(technician.AccepteStatus);
             var Police = _mapper.Map<Police>(policeDto);
             await _policeRepository.UpdateData(Police);
+            Role role= await _roleRepository.GetDataById(policeDto.Person.RoleId);
+            policeDto.Person.Role=role;
             return Ok(policeDto);
         }
 
