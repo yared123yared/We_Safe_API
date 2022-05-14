@@ -20,13 +20,14 @@ namespace WeSafe.Data
         public async Task<List<Police>> GetData()
         {
             var data = await _context.Polices.Include(e => e.Person).ThenInclude(e => e.Role)
-            .Include(e => e.Person).ThenInclude(e => e.Address).ToListAsync();
+            .Include(e => e.Person).ThenInclude(e => e.Address).Include(e => e.Station).ToListAsync();
             return data;
         }
 
         public async Task<Police> GetDataById(int id)
         {
             return await _context.Polices.Include(e => e.Person).ThenInclude(e => e.Role)
+            .Include(e => e.Person).ThenInclude(e => e.Address)
              .Include(e => e.Station).FirstOrDefaultAsync(x => x.Id == id);
         }
 
@@ -47,7 +48,7 @@ namespace WeSafe.Data
         public async Task<bool> DeleteData(Police police)
         {
             _context.Polices.Remove(police);
-             _context.Persons.Remove(police.Person);
+            _context.Persons.Remove(police.Person);
             await _context.SaveChangesAsync();
             return true;
         }
