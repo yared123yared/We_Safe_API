@@ -39,9 +39,11 @@ namespace WeSafe.Data
             return person;
         }
 
-        public Task<Person> UpdateData(Person service)
+        public async Task<Person> UpdateData(Person person)
         {
-            throw new NotImplementedException();
+         _context.Persons.Update(person).Property(x => x.Id).IsModified = false;
+            await _context.SaveChangesAsync();
+            return person;
         }
 
         public async Task<bool> DeleteData(Person person)
