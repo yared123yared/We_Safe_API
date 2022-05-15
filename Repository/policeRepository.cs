@@ -63,9 +63,11 @@ namespace WeSafe.Data
             throw new NotImplementedException();
         }
 
-        public Task<Police> GetByEmail(string email)
+        public async Task<Police> GetDataByPhone(string phone)
         {
-            throw new NotImplementedException();
+       return await _context.Polices.Include(e => e.Person).ThenInclude(e => e.Role)
+            .Include(e => e.Person).ThenInclude(e => e.Address)
+             .Include(e => e.Station).FirstOrDefaultAsync(x => x.Person.Phone == phone);
         }
 
         // public PoliceRepository()

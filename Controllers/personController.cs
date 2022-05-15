@@ -17,6 +17,8 @@ namespace Controllers
     public class PersonController : ControllerBase
     {
         private readonly IRepository<Person> _personRepository;
+        private readonly IRepository<User> _userRepository;
+        private readonly IRepository<Police> _policeRepository;
 
         private readonly IMapper _mapper;
         public PersonController(IRepository<Person> repo, IMapper mapper)
@@ -33,7 +35,7 @@ namespace Controllers
             Console.WriteLine("Authentication Method");
             List<Person> persons = await _personRepository.GetData();
             var person = persons.SingleOrDefault(x => x.Phone == model.Phone && x.Password == model.Password);
-            
+
             // return null if user not found
             if (person == null)
                 return BadRequest(new { message = "Phone or password is incorrect" });
@@ -44,14 +46,14 @@ namespace Controllers
             var key = Encoding.ASCII.GetBytes("THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING");
 
             var tokenDescriptor = new SecurityTokenDescriptor
-            {   
+            {
 
 
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name,person.FirstName),
                     new Claim(ClaimTypes.Role,person.Role.Id.ToString())
-                 
+
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -59,11 +61,28 @@ namespace Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             // user.Token = tokenHandler.WriteToken(token);
             UserEntity userEntity = new UserEntity();
-            userEntity.person = person;
-            userEntity.Token = tokenHandler.WriteToken(token);
-            return Ok(userEntity);
+            PoliceEntity policeEntity = new PoliceEntity();
+            if (person.RoleId == 10)
+            {
+                // return user object
+                User user = await _userRepository.GetDataByPhone(person.Phone);
+                userEntity.user = user;
+                userEntity.Token = tokenHandler.WriteToken(token);
+                return Ok(userEntity);
+
+            }
+            else
+            {
+                // return police object
+                Police police = await _policeRepository.GetDataByPhone(person.Phone);
+                policeEntity.police = police;
+                policeEntity.Token = tokenHandler.WriteToken(token);
+                return Ok(policeEntity);
+            }
+
+
         }
-         [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> GetPersons()
         {
             Console.WriteLine("Get Persons Method invocked");

@@ -49,7 +49,7 @@ namespace WeSafe.Data
         {
             throw new NotImplementedException();
         }
-        public Task<Role> GetByEmail(string email)
+        public Task<Role> GetDataByPhone(string email)
         {
             throw new NotImplementedException();
         }

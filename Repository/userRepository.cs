@@ -62,9 +62,11 @@ namespace WeSafe.Data
             throw new NotImplementedException();
         }
 
-        public Task<User> GetByEmail(string email)
+        public async Task<User> GetDataByPhone(string phone)
         {
-            throw new NotImplementedException();
+      return await _context.Users.Include(e => e.Person).ThenInclude(e => e.Role)
+            .Include(e => e.Person).ThenInclude(e => e.Address).FirstOrDefaultAsync(x => x.Person.Phone == phone);
+     
         }
 
         // public UserRepository()

@@ -77,7 +77,7 @@ namespace WeSafe.Data
             throw new NotImplementedException();
         }
 
-        public Task<Case> GetByEmail(string email)
+        public Task<Case> GetDataByPhone(string email)
         {
             throw new NotImplementedException();
         }
