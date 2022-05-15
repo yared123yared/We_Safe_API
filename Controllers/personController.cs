@@ -64,20 +64,23 @@ namespace Controllers
             // PoliceEntity policeEntity = new PoliceEntity();
             if (person.RoleId == 10)
             {
-                Console.WriteLine("Person is Community User");
-                // return user object
-                var user = await _userRepository.GetDataByPhone(model.Phone);
-                Console.WriteLine("User" + user);
-                userEntity.user = user;
-                userEntity.Token = tokenHandler.WriteToken(token);
+                // Console.WriteLine("Person is Community User");
+                // // return user object
+                // var user = await _userRepository.GetDataByPhone(model.Phone);
+                // Console.WriteLine("User" + user);
+                // userEntity.user = user;
+                // userEntity.Token = tokenHandler.WriteToken(token);
 
 
             }
             else
             {
-                Console.WriteLine("Person Police Officer");
+                Console.WriteLine("Person Police Officer with phone"+ model.Phone);
                 // return police object
-                Police police = await _policeRepository.GetDataByPhone(model.Phone);
+                 var policeModel =await _policeRepository.GetDataByPhone(model.Phone);
+                 var police = _mapper.Map<Police>(policeModel);
+
+        
                 Console.WriteLine("Police:" + police);
                 userEntity.police = police;
                 // policeEntity.Token = tokenHandler.WriteToken(token);
