@@ -65,6 +65,8 @@ namespace WeSafe.Data
 
         public async Task<Police> GetDataByPhone(string phone)
         {
+            Console.WriteLine("Entered on Get by phone method with phone" + phone);
+            
        return await _context.Polices.Include(e => e.Person).ThenInclude(e => e.Role)
             .Include(e => e.Person).ThenInclude(e => e.Address)
              .Include(e => e.Station).FirstOrDefaultAsync(x => x.Person.Phone == phone);
