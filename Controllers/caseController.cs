@@ -41,7 +41,7 @@ namespace Controllers
             return Ok(_mapper.Map<CaseDto>(model));
         }
 
-        [HttpGet("{phone}")]
+        [HttpGet("getByPhone/{phone}")]
         public async Task<IActionResult> GetCaseByPhone(string phone)
         {
             Console.WriteLine("Get Cases Method invocked");
