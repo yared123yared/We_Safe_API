@@ -66,7 +66,7 @@ namespace Controllers
             {
                 Console.WriteLine("Person is Community User");
                 // return user object
-                User user = await _userRepository.GetDataByPhone(person.Phone);
+                User user = await _userRepository.GetDataByPhone(model.Phone);
                 Console.WriteLine("User" + user);
                 userEntity.user = user;
                 userEntity.Token = tokenHandler.WriteToken(token);
@@ -77,7 +77,7 @@ namespace Controllers
             {
                 Console.WriteLine("Person Police Officer");
                 // return police object
-                Police police = await _policeRepository.GetDataByPhone(person.Phone);
+                Police police = await _policeRepository.GetDataByPhone(model.Phone);
                 Console.WriteLine("Police:" + police);
                 policeEntity.police = police;
                 policeEntity.Token = tokenHandler.WriteToken(token);
