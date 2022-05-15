@@ -62,31 +62,32 @@ namespace Controllers
             // user.Token = tokenHandler.WriteToken(token);
             UserEntity userEntity = new UserEntity();
             // PoliceEntity policeEntity = new PoliceEntity();
-            if (person.RoleId == 10)
-            {
-                // Console.WriteLine("Person is Community User");
-                // // return user object
-                // var user = await _userRepository.GetDataByPhone(model.Phone);
-                // Console.WriteLine("User" + user);
-                // userEntity.user = user;
-                // userEntity.Token = tokenHandler.WriteToken(token);
+            // if (person.RoleId == 10)
+            // {
+            //     // Console.WriteLine("Person is Community User");
+            //     // // return user object
+            //     // var user = await _userRepository.GetDataByPhone(model.Phone);
+            //     // Console.WriteLine("User" + user);
+            //     // userEntity.user = user;
+            //     // userEntity.Token = tokenHandler.WriteToken(token);
 
 
-            }
-            else
-            {
-                Console.WriteLine("Person Police Officer with phone"+ model.Phone);
-                // return police object
-                 var policeModel =await _policeRepository.GetDataByPhone(model.Phone);
-                  Console.WriteLine("++++Returened police"+ policeModel);
-                 var police = _mapper.Map<Police>(policeModel);
+            // }
+            // else
+            // {
+            //     Console.WriteLine("Person Police Officer with phone"+ model.Phone);
+            //     // return police object
+            //      var policeModel =await _policeRepository.GetDataByPhone(model.Phone);
+            //       Console.WriteLine("++++Returened police"+ policeModel);
+            //      var police = _mapper.Map<Police>(policeModel);
 
         
-                Console.WriteLine("Police:" + police);
-                userEntity.police = police;
-                // policeEntity.Token = tokenHandler.WriteToken(token);
+            //     Console.WriteLine("Police:" + police);
+            //     userEntity.police = police;
+            //     // policeEntity.Token = tokenHandler.WriteToken(token);
 
-            }
+            // }
+            userEntity.user=person;
             userEntity.Token = tokenHandler.WriteToken(token);
             return Ok(userEntity);
 
