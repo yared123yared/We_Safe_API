@@ -78,6 +78,7 @@ namespace Controllers
                 Console.WriteLine("Person Police Officer with phone"+ model.Phone);
                 // return police object
                  var policeModel =await _policeRepository.GetDataByPhone(model.Phone);
+                  Console.WriteLine("++++Returened police"+ policeModel);
                  var police = _mapper.Map<Police>(policeModel);
 
         
