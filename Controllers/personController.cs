@@ -21,9 +21,11 @@ namespace Controllers
         private readonly IRepository<Police> _policeRepository;
 
         private readonly IMapper _mapper;
-        public PersonController(IRepository<Person> repo, IMapper mapper)
+        public PersonController(IRepository<Person> repo,IRepository<User> userRepo,IRepository<Police> policeRepo, IMapper mapper)
         {
             _personRepository = repo;
+            _userRepository=userRepo;
+            _policeRepository=policeRepo;
             _mapper = mapper;
         }
 
@@ -36,13 +38,6 @@ namespace Controllers
             List<Person> persons = await _personRepository.GetData();
             var person = persons.SingleOrDefault(x => x.Phone == model.Phone && x.Password == model.Password);
 
-            List<User> users = await _userRepository.GetData();
-            var user=users.SingleOrDefault(x => x.Person.Phone == model.Phone);
-
-             List<Police> polices = await _policeRepository.GetData();
-            var police=polices.SingleOrDefault(x => x.Person.Phone == model.Phone);
-            
-           
             // return null if user not found
             if (person == null)
                 return BadRequest(new { message = "Phone or password is incorrect" });
@@ -68,23 +63,27 @@ namespace Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             // user.Token = tokenHandler.WriteToken(token);
             UserEntity userEntity = new UserEntity();
-            PoliceEntity policeEntity = new PoliceEntity();
+            // PoliceEntity policeEntity = new PoliceEntity();
             if (person.RoleId == 10)
             {
+                Console.WriteLine("Person is Community User");
+                // return user object
+                var user = await _userRepository.GetDataByPhone(model.Phone);
                 Console.WriteLine("User" + user);
                 userEntity.user = user;
-             
+                // userEntity.Token = tokenHandler.WriteToken(token);
 
 
             }
             else
             {
-               
-                userEntity.police = police;
+                Console.WriteLine("Person Police Officer with phone" + model.Phone);
+                // return police object
+                var policeModel = await _policeRepository.GetDataByPhone(model.Phone);
+                userEntity.police = policeModel;
                 // policeEntity.Token = tokenHandler.WriteToken(token);
 
             }
-            // userEntity.user=person;
             userEntity.Token = tokenHandler.WriteToken(token);
             return Ok(userEntity);
 
