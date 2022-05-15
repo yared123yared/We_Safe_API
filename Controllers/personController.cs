@@ -64,8 +64,10 @@ namespace Controllers
             PoliceEntity policeEntity = new PoliceEntity();
             if (person.RoleId == 10)
             {
+                Console.WriteLine("Person is Community User");
                 // return user object
                 User user = await _userRepository.GetDataByPhone(person.Phone);
+                Console.WriteLine("User" + user);
                 userEntity.user = user;
                 userEntity.Token = tokenHandler.WriteToken(token);
                 return Ok(userEntity);
@@ -73,8 +75,10 @@ namespace Controllers
             }
             else
             {
+                Console.WriteLine("Person Police Officer");
                 // return police object
                 Police police = await _policeRepository.GetDataByPhone(person.Phone);
+                Console.WriteLine("Police:" + police);
                 policeEntity.police = police;
                 policeEntity.Token = tokenHandler.WriteToken(token);
                 return Ok(policeEntity);
