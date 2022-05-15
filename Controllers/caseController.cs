@@ -40,6 +40,14 @@ namespace Controllers
             var model = await _caseRepository.GetDataById(id);
             return Ok(_mapper.Map<CaseDto>(model));
         }
+
+        [HttpGet("{phone}")]
+        public async Task<IActionResult> GetCaseByPhone(string phone)
+        {
+            Console.WriteLine("Get Cases Method invocked");
+            var model = await _caseRepository.GetDataByPhone(phone);
+            return Ok(_mapper.Map<CaseDto>(model));
+        }
         [HttpPost]
         public async Task<IActionResult> CreatCase(CaseDto caseDto)
         {

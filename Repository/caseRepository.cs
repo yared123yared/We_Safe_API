@@ -77,9 +77,18 @@ namespace WeSafe.Data
             throw new NotImplementedException();
         }
 
-        public Task<Case> GetDataByPhone(string email)
+        public async Task<Case> GetDataByPhone(string phone)
         {
-            throw new NotImplementedException();
+            return await _context.Cases.Include(e => e.AssignedPolice).ThenInclude(e => e.Person).ThenInclude(e => e.Role)
+          .Include(e => e.AssignedPolice).ThenInclude(e => e.Person).ThenInclude(e => e.Address)
+          .Include(e => e.AssignedPolice).ThenInclude(e => e.Station)
+          .Include(e => e.ReporterAdmin).ThenInclude(e => e.Role)
+              .Include(e => e.ReporterAdmin).ThenInclude(e => e.Address)
+           .Include(e => e.Evidence).ThenInclude(e => e.Attachment).ThenInclude(e => e.Images)
+           .Include(e => e.Evidence).ThenInclude(e => e.Attachment).ThenInclude(e => e.Videos)
+           .Include(e => e.Evidence).ThenInclude(e => e.Attachment).ThenInclude(e => e.Voices)
+
+           .FirstOrDefaultAsync(x => x.AssignedPolice.Person.Phone == phone);
         }
     }
 }
