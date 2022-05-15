@@ -61,7 +61,7 @@ namespace Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             // user.Token = tokenHandler.WriteToken(token);
             UserEntity userEntity = new UserEntity();
-            PoliceEntity policeEntity = new PoliceEntity();
+            // PoliceEntity policeEntity = new PoliceEntity();
             if (person.RoleId == 10)
             {
                 Console.WriteLine("Person is Community User");
@@ -70,7 +70,7 @@ namespace Controllers
                 Console.WriteLine("User" + user);
                 userEntity.user = user;
                 userEntity.Token = tokenHandler.WriteToken(token);
-                return Ok(userEntity);
+
 
             }
             else
@@ -79,11 +79,12 @@ namespace Controllers
                 // return police object
                 Police police = await _policeRepository.GetDataByPhone(model.Phone);
                 Console.WriteLine("Police:" + police);
-                policeEntity.police = police;
-                policeEntity.Token = tokenHandler.WriteToken(token);
-                return Ok(policeEntity);
-            }
+                userEntity.police = police;
+                // policeEntity.Token = tokenHandler.WriteToken(token);
 
+            }
+            userEntity.Token = tokenHandler.WriteToken(token);
+            return Ok(userEntity);
 
         }
         [HttpGet]
