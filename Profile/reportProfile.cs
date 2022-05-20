@@ -16,6 +16,7 @@ namespace WeSafe.Profiles
             .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
             .ForMember(dest => dest.ReportDate, opt => opt.MapFrom(src => src.ReportDate))
             .ForMember(dest => dest.ReportedBy, opt => opt.MapFrom(src => src.ReportedBy))
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
             .ForMember(dest => dest.Evidence, opt => opt.MapFrom(src => src.Evidence));
 
             CreateMap<ReportDto, Report>();
