@@ -12,7 +12,7 @@ namespace WeSafe.Models
         public string Summary { get; set; }
         public string Description { get; set; }
         public DateTime ReportDate { get; set; }
-
+        public string Status { get; set; }
         public int UserId { get; set; }
         public User? ReportedBy { get; set; }
         public Evidence Evidence { get; set; }
