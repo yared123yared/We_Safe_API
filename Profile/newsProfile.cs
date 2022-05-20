@@ -22,7 +22,7 @@ namespace WeSafe.Profiles
             .ForMember(dest => dest.Longtiude, opt => opt.MapFrom(src => src.Longtiude));
             // .ForMember(dest => dest.Person, opt => opt.MapFrom(src => src.Person))
 
-            CreateMap<CaseDto, Case>();
+            CreateMap<NewsDto, News>();
         }
 
     }
