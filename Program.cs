@@ -52,7 +52,7 @@ builder.Services.AddControllersWithViews()
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddCors(option =>
 {
-    option.AddPolicy(name:"AllowedOrigin",
+    option.AddPolicy(name: "AllowedOrigin",
         builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
         );
 });
@@ -63,6 +63,7 @@ builder.Services.AddScoped<IRepository<Police>, PoliceRepository>();
 builder.Services.AddScoped<IRepository<Role>, RoleRepository>();
 builder.Services.AddScoped<IRepository<Report>, ReportRepository>();
 builder.Services.AddScoped<IRepository<Case>, CaseRepository>();
+builder.Services.AddScoped<IRepository<News>, NewsRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -75,11 +76,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
- app.UseCors(x => x
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true) // allow any origin
-                .AllowCredentials());
+app.UseCors(x => x
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .SetIsOriginAllowed(origin => true) // allow any origin
+               .AllowCredentials());
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
