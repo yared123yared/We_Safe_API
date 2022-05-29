@@ -19,13 +19,13 @@ namespace WeSafe.Data
 
         public async Task<List<Criminal>> GetData()
         {
-            var data = await _context.Criminals.ToListAsync();
+            var data = await _context.Criminals.Include(e => e.Images).ToListAsync();
             return data;
         }
 
         public async Task<Criminal> GetDataById(int id)
         {
-              return await _context.Criminals.FirstOrDefaultAsync(x => x.Id == id);
+              return await _context.Criminals.Include(e => e.Images).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Criminal> InsertData(Criminal criminal)
