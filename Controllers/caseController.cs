@@ -11,7 +11,7 @@ namespace Controllers
 
     [ApiController]
     [Route("api/case")]
-    [System.Web.Http.Cors.EnableCors(origins: "*", headers: "*", methods: "*")]
+    // [System.Web.Http.Cors.EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CaseController : ControllerBase
     {
         private readonly IRepository<Case> _caseRepository;
