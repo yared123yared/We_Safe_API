@@ -19,5 +19,6 @@ namespace WeSafe.Data
         public DbSet<Case> Cases { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<FilePath> Paths { get; set; }
+        public  DbSet<Criminal> Criminals { get; set; }
     }
 }
