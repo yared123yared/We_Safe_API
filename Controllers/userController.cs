@@ -30,14 +30,14 @@ namespace Controllers
             var model = await _userRepository.GetData();
             return Ok(_mapper.Map<IEnumerable<UserDto>>(model));
         }
-        [HttpGet("{id}")]
+        [HttpGet("id={id}")]
         public async Task<IActionResult> GetUser(int id)
         {
             var model = await _userRepository.GetDataById(id);
             var User = _mapper.Map<User>(model);
             return Ok(model);
         }
-          [HttpGet("{phone}")]
+          [HttpGet("phone={phone}")]
         public async Task<IActionResult> GetUserByPhone(string phone)
         {
             var model = await _userRepository.GetDataByPhone(phone);
