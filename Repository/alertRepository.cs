@@ -25,7 +25,7 @@ namespace WeSafe.Data
 
         public async Task<Alert> GetDataById(int id)
         {
-            return await _context.Alerts.Include(e=>e.AlertedBy).FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Alerts.Include(e=>e.AlertedBy).ThenInclude(e=>e.Person).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Alert> InsertData(Alert alert)
