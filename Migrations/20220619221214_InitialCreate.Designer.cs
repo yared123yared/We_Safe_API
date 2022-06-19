@@ -12,7 +12,7 @@ using WeSafe.Data;
 namespace wesafe_backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220617185722_InitialCreate")]
+    [Migration("20220619221214_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,6 +53,33 @@ namespace wesafe_backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Addresses");
+                });
+
+            modelBuilder.Entity("WeSafe.Models.Alert", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<double>("Distance")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Longtiude")
+                        .HasColumnType("float");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Alerts");
                 });
 
             modelBuilder.Entity("WeSafe.Models.Attachment", b =>
@@ -200,16 +227,17 @@ namespace wesafe_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double?>("Distance")
+                        .HasColumnType("float");
+
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Latitude")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
 
-                    b.Property<string>("Longtiude")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Longtiude")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("PostedDate")
                         .HasColumnType("datetime2");
@@ -414,6 +442,17 @@ namespace wesafe_backend.Migrations
                     b.HasIndex("PersonId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("WeSafe.Models.Alert", b =>
+                {
+                    b.HasOne("WeSafe.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WeSafe.Models.Case", b =>

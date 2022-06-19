@@ -282,3 +282,4 @@
 /Users/apple/Documents/Company/hadistech/WeSafe/wesafe_backend/obj/Debug/net6.0/wesafe_backend.pdb
 /Users/apple/Documents/Company/hadistech/WeSafe/wesafe_backend/obj/Debug/net6.0/wesafe_backend.genruntimeconfig.cache
 /Users/apple/Documents/Company/hadistech/WeSafe/wesafe_backend/obj/Debug/net6.0/ref/wesafe_backend.dll
+/Users/apple/Documents/Company/hadistech/WeSafe/wesafe_backend/bin/Debug/net6.0/System.Device.Portable.dll

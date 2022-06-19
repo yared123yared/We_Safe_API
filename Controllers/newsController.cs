@@ -9,13 +9,15 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using WeSafe.Data;
 using WeSafe.Models;
 using WeSafe.DTO;
+using System.Device.Location;
+using WeSafe.Entity;
 
 namespace Controllers
 {
     // [Authorize]
 
     [ApiController]
-    [Route("api/news")] 
+    [Route("api/news")]
     public class NewsController : ControllerBase
     {
         private readonly IRepository<News> _newsRepository;
@@ -32,6 +34,34 @@ namespace Controllers
         {
             Console.WriteLine("Get news Method invocked");
             var model = await _newsRepository.GetData();
+            return Ok(_mapper.Map<IEnumerable<NewsDto>>(model));
+
+            // foreach (var news in data)
+            // {
+            //     var firstCordinate = new GeoCoordinate(Latitude, Longtiude);
+            //     var secondCordinate = new GeoCoordinate(news.Latitude, news.Longtiude);
+
+            //     double distance = firstCordinate.GetDistanceTo(secondCordinate);
+            //     news.Distance = distance;
+
+            // }
+            // data = (List<News>)data.OrderBy(s => s.Distance);
+        }
+        [HttpGet("nearby")]
+        public async Task<IActionResult> GetNearbyNews([FromBody] NewsEntity newsEntity)
+        {
+            Console.WriteLine("Get news Method invocked");
+            var model = await _newsRepository.GetData();
+            foreach (var news in model)
+            {
+                var firstCordinate = new GeoCoordinate(newsEntity.Latitude, newsEntity.Longtiude);
+                var secondCordinate = new GeoCoordinate(news.Latitude, news.Longtiude);
+
+                double distance = firstCordinate.GetDistanceTo(secondCordinate);
+                news.Distance = distance;
+
+            }
+            model = (List<News>)model.OrderBy(s => s.Distance);
             return Ok(_mapper.Map<IEnumerable<NewsDto>>(model));
         }
         [HttpGet("{id}")]

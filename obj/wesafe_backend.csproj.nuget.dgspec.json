@@ -110,6 +110,10 @@
               "target": "Package",
               "version": "[2.0.0.1, )"
             },
+            "System.Device.Location.Portable": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.16.0, )"

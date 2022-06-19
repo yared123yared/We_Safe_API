@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WeSafe.Models;
@@ -15,7 +16,7 @@ namespace WeSafe.Data
 
         public async Task<bool> DeleteData(News news)
         {
-             _context.News.Remove(news);
+            _context.News.Remove(news);
             await _context.SaveChangesAsync();
             return true;
         }
@@ -28,7 +29,7 @@ namespace WeSafe.Data
 
         public async Task<News> GetDataById(int id)
         {
-           return await _context.News.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.News.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public Task<News> GetDataByPhone(string email)
@@ -48,7 +49,7 @@ namespace WeSafe.Data
 
         public async Task<News> InsertData(News news)
         {
-           _context.News.Add(news);
+            _context.News.Add(news);
             await _context.SaveChangesAsync();
             return news;
         }
@@ -58,6 +59,21 @@ namespace WeSafe.Data
             _context.News.Update(news).Property(x => x.Id).IsModified = false;
             await _context.SaveChangesAsync();
             return news;
+        }
+        public async Task<List<News>> GetNearestNews(double Latitude, double Longtiude)
+        {
+            List<News> data = await _context.News.ToListAsync();
+            foreach (var news in data)
+            {
+                var firstCordinate = new GeoCoordinate(Latitude, Longtiude);
+                var secondCordinate = new GeoCoordinate(news.Latitude, news.Longtiude);
+
+                double distance = firstCordinate.GetDistanceTo(secondCordinate);
+                news.Distance = distance;
+
+            }
+            data = (List<News>)data.OrderBy(s => s.Distance);
+            return data;
         }
     }
 }
