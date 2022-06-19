@@ -62,7 +62,7 @@ namespace Controllers
 
             }
             if(model!=null){
-                 model = (List<News>)model.OrderBy(s => s.Distance);
+                 model =model.OrderBy(s => s.Distance).ToList();
             }
            
             return Ok(_mapper.Map<IEnumerable<NewsDto>>(model));

@@ -19,7 +19,7 @@ namespace WeSafe.Data
 
         public async Task<List<Alert>> GetData()
         {
-             var data = await _context.Alerts.Include(e=>e.AlertedBy).ToListAsync();
+             var data = await _context.Alerts.Include(e=>e.AlertedBy).ThenInclude(e=>e.Person).ToListAsync();
             return data;
         }
 
