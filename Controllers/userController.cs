@@ -42,7 +42,7 @@ namespace Controllers
         {
             var model = await _userRepository.GetDataByPhone(phone);
             var User = _mapper.Map<User>(model);
-            return Ok(model);
+            return Ok(User);
         }
         [HttpPost]
         public async Task<IActionResult> Createuser(UserDto userDto)
