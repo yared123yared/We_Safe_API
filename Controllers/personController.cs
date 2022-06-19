@@ -64,7 +64,7 @@ namespace Controllers
             // user.Token = tokenHandler.WriteToken(token);
             UserEntity userEntity = new UserEntity();
             // PoliceEntity policeEntity = new PoliceEntity();
-            if (person.RoleId == 10)
+            if (person.RoleId == 1)
             {
                 Console.WriteLine("Person is Community User");
                 // return user object
