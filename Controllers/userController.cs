@@ -37,6 +37,13 @@ namespace Controllers
             var User = _mapper.Map<User>(model);
             return Ok(model);
         }
+          [HttpGet("{phone}")]
+        public async Task<IActionResult> GetUserByPhone(string phone)
+        {
+            var model = await _userRepository.GetDataByPhone(phone);
+            var User = _mapper.Map<User>(model);
+            return Ok(model);
+        }
         [HttpPost]
         public async Task<IActionResult> Createuser(UserDto userDto)
         {
