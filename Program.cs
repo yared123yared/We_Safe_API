@@ -65,6 +65,7 @@ builder.Services.AddScoped<IRepository<Report>, ReportRepository>();
 builder.Services.AddScoped<IRepository<Case>, CaseRepository>();
 builder.Services.AddScoped<IRepository<News>, NewsRepository>();
 builder.Services.AddScoped<IRepository<Criminal>, CriminalRepository>();
+builder.Services.AddScoped<IRepository<Alert>, AlertRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
