@@ -61,7 +61,10 @@ namespace Controllers
                 news.Distance = distance;
 
             }
-            model = (List<News>)model.OrderBy(s => s.Distance);
+            if(model!=null){
+                 model = (List<News>)model.OrderBy(s => s.Distance);
+            }
+           
             return Ok(_mapper.Map<IEnumerable<NewsDto>>(model));
         }
         [HttpGet("{id}")]
