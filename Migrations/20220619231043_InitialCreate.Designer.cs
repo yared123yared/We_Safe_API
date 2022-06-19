@@ -12,7 +12,7 @@ using WeSafe.Data;
 namespace wesafe_backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220619221214_InitialCreate")]
+    [Migration("20220619231043_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -446,13 +446,13 @@ namespace wesafe_backend.Migrations
 
             modelBuilder.Entity("WeSafe.Models.Alert", b =>
                 {
-                    b.HasOne("WeSafe.Models.User", "User")
+                    b.HasOne("WeSafe.Models.User", "AlertedBy")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("AlertedBy");
                 });
 
             modelBuilder.Entity("WeSafe.Models.Case", b =>

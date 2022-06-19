@@ -9,10 +9,11 @@ namespace WeSafe.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public User User { get; set; }
         public double Latitude { get; set; }
         public double Longtiude { get; set; }
         public double Distance { get; set; }
+        public int UserId { get; set; }
+        public User? AlertedBy { get; set; }
 
     }
 

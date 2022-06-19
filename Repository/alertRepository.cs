@@ -19,13 +19,13 @@ namespace WeSafe.Data
 
         public async Task<List<Alert>> GetData()
         {
-             var data = await _context.Alerts.ToListAsync();
+             var data = await _context.Alerts.Include(e=>e.AlertedBy).ToListAsync();
             return data;
         }
 
         public async Task<Alert> GetDataById(int id)
         {
-            return await _context.Alerts.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Alerts.Include(e=>e.AlertedBy).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Alert> InsertData(Alert alert)

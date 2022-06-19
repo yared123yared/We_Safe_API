@@ -15,7 +15,8 @@ namespace WeSafe.Profiles
                  .ForMember(dest => dest.Latitude, opt => opt.MapFrom(src => src.Latitude))
                       .ForMember(dest => dest.Longtiude, opt => opt.MapFrom(src => src.Longtiude))
                        .ForMember(dest => dest.Distance, opt => opt.MapFrom(src => src.Distance))
-            .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User));
+                          .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
+            .ForMember(dest => dest.AlertedBy, opt => opt.MapFrom(src => src.AlertedBy));
             CreateMap<AlertDTO, Alert>();
 
         }
