@@ -72,6 +72,11 @@ namespace WeSafe.Data
              .Include(e => e.Station).FirstOrDefaultAsync(x => x.Person.Phone == phone);
         }
 
+        public Task<List<Police>> GetDataByUserId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         // public PoliceRepository()
         // {
         // }

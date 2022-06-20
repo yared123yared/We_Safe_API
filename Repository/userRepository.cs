@@ -69,6 +69,11 @@ namespace WeSafe.Data
      
         }
 
+        public Task<List<User>> GetDataByUserId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         // public UserRepository()
         // {
         // }

@@ -37,9 +37,9 @@ namespace Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetReport(int id)
         {
-            var model = await _reportRepository.GetDataById(id);
-            var report = _mapper.Map<Report>(model);
-            return Ok(model);
+            var model = await _reportRepository.GetDataByUserId(id);
+            // var report = _mapper.Map<Report>(model);
+       return Ok(_mapper.Map<IEnumerable<ReportDto>>(model));
         }
         [HttpPost]
         public async Task<IActionResult> CreatReport(ReportDto reportDto)

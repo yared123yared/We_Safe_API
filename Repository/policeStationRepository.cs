@@ -66,6 +66,11 @@ namespace WeSafe.Data
             throw new NotImplementedException();
         }
 
+        public Task<List<Station>> GetDataByUserId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         // public PoliceStationRepository()
         // {
         // }

@@ -67,5 +67,10 @@ namespace WeSafe.Data
         {
             throw new NotImplementedException();
         }
+
+        public Task<List<Person>> GetDataByUserId(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

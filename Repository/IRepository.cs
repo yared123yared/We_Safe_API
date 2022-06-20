@@ -15,5 +15,6 @@ namespace WeSafe.Data
         Task<List<T>> GetPaginatedData(int pageNumber, int pageSize,string orderBy,string search);
         Task<int> GetTotalPage(int pageSize,string search);
         Task<T> GetDataByPhone(string email);
+        Task<List<T>> GetDataByUserId(int id);
     }
 }

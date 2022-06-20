@@ -62,5 +62,15 @@ namespace WeSafe.Data
             await _context.SaveChangesAsync();
             return report;
         }
+
+        public async Task<List<Report>> GetDataByUserId(int id)
+        {
+          var data = await _context.Reports
+            .Include(e=>e.ReportedBy).ThenInclude(e=>e.Person).ThenInclude(e=>e.Role)
+            .Include(e=>e.ReportedBy).ThenInclude(e=>e.Person).ThenInclude(e=>e.Address)
+            .Include(e=>e.Evidence).ThenInclude(e=>e.Attachment).ToListAsync();
+            data=data.Where(e=>e.UserId==id).ToList();
+            return data;
+        }
     }
 }

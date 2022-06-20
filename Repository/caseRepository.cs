@@ -90,5 +90,20 @@ namespace WeSafe.Data
 
            .FirstOrDefaultAsync(x => x.AssignedPolice.Person.Phone == phone);
         }
+
+        public async Task<List<Case>> GetDataByUserId(int id)
+        {
+               var model= await _context.Cases.Include(e => e.AssignedPolice).ThenInclude(e => e.Person).ThenInclude(e => e.Role)
+          .Include(e => e.AssignedPolice).ThenInclude(e => e.Person).ThenInclude(e => e.Address)
+          .Include(e => e.AssignedPolice).ThenInclude(e => e.Station)
+          .Include(e => e.ReporterAdmin).ThenInclude(e => e.Role)
+              .Include(e => e.ReporterAdmin).ThenInclude(e => e.Address)
+           .Include(e => e.Evidence).ThenInclude(e => e.Attachment).ThenInclude(e => e.Images)
+           .Include(e => e.Evidence).ThenInclude(e => e.Attachment).ThenInclude(e => e.Videos)
+           .Include(e => e.Evidence).ThenInclude(e => e.Attachment).ThenInclude(e => e.Voices).ToListAsync();
+model=model.Where(e=>e.AssignedPoliceId==id).ToList();
+        //    .FirstOrDefaultAsync(x => x.Id == id);
+        return model;
+        }
     }
 }

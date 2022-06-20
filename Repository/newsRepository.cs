@@ -75,5 +75,10 @@ namespace WeSafe.Data
             data = (List<News>)data.OrderBy(s => s.Distance);
             return data;
         }
+
+        public Task<List<News>> GetDataByUserId(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

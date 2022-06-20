@@ -37,7 +37,7 @@ namespace Controllers
         public async Task<IActionResult> GetCase(int id)
         {
             Console.WriteLine("Get Cases Method invocked");
-            var model = await _caseRepository.GetDataById(id);
+            var model = await _caseRepository.GetDataByUserId(id);
             return Ok(_mapper.Map<CaseDto>(model));
         }
 
@@ -46,7 +46,7 @@ namespace Controllers
         {
             Console.WriteLine("Get Cases Method invocked");
             var model = await _caseRepository.GetDataByPhone(phone);
-            return Ok(_mapper.Map<CaseDto>(model));
+          return Ok(_mapper.Map<IEnumerable<CaseDto>>(model));
         }
         [HttpPost]
         public async Task<IActionResult> CreatCase(CaseDto caseDto)
