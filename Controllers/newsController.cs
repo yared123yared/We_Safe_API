@@ -47,7 +47,7 @@ namespace Controllers
             // }
             // data = (List<News>)data.OrderBy(s => s.Distance);
         }
-        [HttpGet("nearby")]
+        [HttpPost("nearby")]
         public async Task<IActionResult> GetNearbyNews([FromBody] NewsEntity newsEntity)
         {
             Console.WriteLine("Get news Method invocked");
