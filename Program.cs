@@ -7,7 +7,6 @@ using WeSafe.Data;
 using WeSafe.Models;
 using Microsoft.Extensions.Configuration;
 using System.Configuration;
-using VueChatApp.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -89,8 +88,4 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapHub<NotificationHub>("/test");
-});
 app.Run();
