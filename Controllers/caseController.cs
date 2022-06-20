@@ -38,7 +38,7 @@ namespace Controllers
         {
             Console.WriteLine("Get Cases Method invocked");
             var model = await _caseRepository.GetDataByUserId(id);
-            return Ok(_mapper.Map<CaseDto>(model));
+             return Ok(_mapper.Map<IEnumerable<CaseDto>>(model));
         }
 
         [HttpGet("getByPhone/{phone}")]
