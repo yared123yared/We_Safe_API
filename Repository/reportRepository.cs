@@ -26,9 +26,11 @@ namespace WeSafe.Data
         public async Task<List<Report>> GetData()
         {
             var data = await _context.Reports
-            .Include(e=>e.ReportedBy).ThenInclude(e=>e.Person).ThenInclude(e=>e.Role)
+                     .Include(e=>e.ReportedBy).ThenInclude(e=>e.Person).ThenInclude(e=>e.Role)
             .Include(e=>e.ReportedBy).ThenInclude(e=>e.Person).ThenInclude(e=>e.Address)
-            .Include(e=>e.Evidence).ThenInclude(e=>e.Attachment).ToListAsync();
+            .Include(e=>e.Evidence).ThenInclude(e=>e.Attachment).ThenInclude(e=>e.Images)
+            .Include(e=>e.Evidence).ThenInclude(e=>e.Attachment).ThenInclude(e=>e.Videos)
+            .Include(e=>e.Evidence).ThenInclude(e=>e.Attachment).ThenInclude(e=>e.Voices).ToListAsync();
             return data;
         }
 
@@ -68,7 +70,10 @@ namespace WeSafe.Data
           var data = await _context.Reports
             .Include(e=>e.ReportedBy).ThenInclude(e=>e.Person).ThenInclude(e=>e.Role)
             .Include(e=>e.ReportedBy).ThenInclude(e=>e.Person).ThenInclude(e=>e.Address)
-            .Include(e=>e.Evidence).ThenInclude(e=>e.Attachment).ToListAsync();
+            .Include(e=>e.Evidence).ThenInclude(e=>e.Attachment).ThenInclude(e=>e.Images)
+            .Include(e=>e.Evidence).ThenInclude(e=>e.Attachment).ThenInclude(e=>e.Videos)
+            .Include(e=>e.Evidence).ThenInclude(e=>e.Attachment).ThenInclude(e=>e.Voices).
+            ToListAsync();
             data=data.Where(e=>e.UserId==id).ToList();
             return data;
         }
